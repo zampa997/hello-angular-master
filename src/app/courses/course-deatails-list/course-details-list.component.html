@@ -1,0 +1,62 @@
+<div class="container app2" id="main">
+    <!--<div class="myborder"></div>
+    <table class="table table-dark table-striped table-hover"
+        style="width: 100%; user-select: none; -moz-user-select: none;">
+        <thead>
+            <th scope="col">id</th>
+            <th scope="col">title</th>
+            <th scope="col">description</th>
+            <th scope="col">duration</th>
+            <th scope="col">base price</th>
+            <th scope="col">grants certification</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ singleCourse.id }}</td>
+                <td>{{ singleCourse.title }}</td>
+                <td>{{ singleCourse.description }}</td>
+                <td>{{ singleCourse.duration }}</td>
+                <td>{{ singleCourse.basePrice }}</td>
+                <td>{{ singleCourse.grantsCertification }}</td>
+                <td style="text-align: right;">
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-warning">Modify</button>
+                        <button type="button" class="btn btn-danger">Delete</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="myborder"></div>-->
+</div>
+
+<div class="image_card">
+    <img src="\assets\imagines\online-course.png" alt="STOCAZZO" class="responsive-img" style="width: 200px;">
+</div>  
+<div class="course_card">
+    <a routerLink="/courses" class="previous">&laquo;</a>
+    <div class="input-group">
+        <span class="input-group-text" id="basic-addon1">ID</span>
+        <input type="text" class="form-control" aria-label="Username"value={{singleCourse.id}} readonly>
+    </div>
+    <div class="input-group">
+        <span class="input-group-text" id="basic-addon1">Title</span>
+        <input type="text" class="form-control" aria-label="Username" value={{singleCourse.title}} readonly>
+    </div>
+    <div class="input-group">
+        <span class="input-group-text" id="basic-addon1">Description</span>
+        <input type="text" class="form-control" aria-label="Username" value={{singleCourse.description}} readonly>
+    </div>
+    <div class="input-group">
+        <span class="input-group-text" id="basic-addon1">Duration</span>
+        <input type="text" class="form-control" aria-label="Username" value={{singleCourse.duration}} readonly>
+    </div>
+    <div class="input-group">
+        <span class="input-group-text" id="basic-addon1">Base price</span>
+        <input type="text" class="form-control" aria-label="Username" value={{singleCourse.basePrice}} readonly>
+    </div>
+    <div class="input-group">
+        <span class="input-group-text" id="basic-addon1">Grants certifications</span>
+        <input type="check" class="form-control" aria-label="Username" value={{singleCourse.grantsCertification}} readonly>
+    </div>
+</div> 

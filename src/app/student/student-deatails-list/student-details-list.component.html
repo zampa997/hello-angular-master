@@ -1,0 +1,33 @@
+<div class="container app2" id="main">
+</div>
+
+<div class="image_card">
+    <img src="\assets\imagines\user.png" alt="STOCAZZO" class="responsive-img" style="width: 200px;">
+</div>  
+<div class="course_card">
+    <a routerLink="/students" class="previous">&laquo;</a>
+    <div class="input-group">
+        <span class="input-group-text" id="basic-addon1">ID</span>
+        <input type="text" class="form-control" aria-label="Username"value={{singleStudent.id}} readonly>
+    </div>
+    <div class="input-group">
+        <span class="input-group-text" id="basic-addon1">First name</span>
+        <input type="text" class="form-control" aria-label="Username" value={{singleStudent.firstName}} readonly>
+    </div>
+    <div class="input-group">
+        <span class="input-group-text" id="basic-addon1">Last name</span>
+        <input type="text" class="form-control" aria-label="Username" value={{singleStudent.lastName}} readonly>
+    </div>
+    <div class="input-group">
+        <span class="input-group-text" id="basic-addon1">email</span>
+        <input type="text" class="form-control" aria-label="Username" value={{singleStudent.email}} readonly>
+    </div>
+    <div class="input-group">
+        <span class="input-group-text" id="basic-addon1">phone</span>
+        <input type="text" class="form-control" aria-label="Username" value={{singleStudent.phoneNumber}} readonly>
+    </div>
+    <div class="input-group">
+        <span class="input-group-text" id="basic-addon1">Birth date</span>
+        <input type="check" class="form-control" aria-label="Username" value={{singleStudent.birthDate}} readonly>
+    </div>
+</div> 

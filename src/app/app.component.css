@@ -1,0 +1,28 @@
+body{
+    background-color: rgb(58, 58, 58);
+    color: black;
+}
+.background{
+    position: fixed;
+    background-color: rgb(58, 58, 58);
+    height: 2000px;
+    width: 1000px;
+    rotate: 30deg;
+    right:1800px;
+    top: 600px;
+    box-shadow: 0px 0px 40px 5px black;
+}
+.background2{
+    position: fixed;
+    background-color: rgb(136, 136, 136);
+    height: 2000px;
+    width: 1000px;
+    rotate: 150deg;
+    right:-800px;
+    top: -500px;
+    z-index: -999;
+    box-shadow: 0px 0px 20px 5px black;
+}
+nav{
+    box-shadow: 0px 0px 10px 5px black;
+}
