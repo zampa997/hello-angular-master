@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, throwError } from "rxjs";
 import { catchError, tap } from "rxjs/operators";
+import { Area } from "../DTOs/area";
 import { Course } from "./course";
 
 
@@ -16,6 +17,18 @@ export class DidactisService {
   }
   getCourses(): Observable<Course[]>{
     return this.http.get<Course[]>(this.courseUrl)
+            .pipe( tap(data => console.log(JSON.stringify(data))),
+            catchError(this.handleError)
+            );
+  }
+  getCourseById(id:Number): Observable<Course>{
+    return this.http.get<Course>(`${this.courseUrl}/${id}`)
+            .pipe( tap(data => console.log(JSON.stringify(data))),
+            catchError(this.handleError)
+            );
+  }
+  getAreas() : Observable<Area[]>{ 
+    return this.http.get<Area[]>(`${this.courseUrl}/areas`)
             .pipe( tap(data => console.log(JSON.stringify(data))),
             catchError(this.handleError)
             );

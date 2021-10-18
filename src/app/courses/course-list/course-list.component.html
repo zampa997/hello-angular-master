@@ -1,6 +1,8 @@
 <div class="container app2" id="main">
+  <button class="btn btn-primary mb-3 ms-3" [routerLink]="['/addcourse']">Add</button>
   <div class="myborder"></div>
-  <table class="table table-dark table-striped table-hover" style="width: 100%; user-select: none; -moz-user-select: none;">
+  <table class="table table-dark table-striped table-hover"
+    style="width: 100%; user-select: none; -moz-user-select: none;">
     <thead>
       <tr>
         <th scope="col">id</th>
@@ -16,11 +18,11 @@
         <td>{{ c.description }}</td>
         <td style="text-align: right;">
           <div class="btn-group" role="group" aria-label="Basic example">
-            <button type="button" class="btn btn-primary" routerLink="/coursesdetails">Info</button>
+            <button type="button" class="btn btn-primary" [routerLink]="['/coursedetails', c.id]">Info</button>
             <button type="button" class="btn btn-warning">Modify</button>
             <button type="button" class="btn btn-danger">Delete</button>
           </div>
-        </td>
+        </td> 
       </tr>
     </tbody>
   </table>
