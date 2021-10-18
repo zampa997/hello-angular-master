@@ -32,31 +32,53 @@
 
 <div class="image_card">
     <img src="\assets\imagines\online-course.png" alt="STOCAZZO" class="responsive-img" style="width: 200px;">
-</div>  
-<div class="course_card">
-    <a routerLink="/courses" class="previous">&laquo;</a>
+</div>
+<div class="course_card" *ngIf="course">
+
+
+    <a (click)="onBack()" class="previous">&laquo;</a>
     <div class="input-group">
         <span class="input-group-text" id="basic-addon1">ID</span>
-        <input type="text" class="form-control" aria-label="Username"value={{singleCourse.id}} readonly>
+        <span>{{ course.id }}</span>
     </div>
     <div class="input-group">
         <span class="input-group-text" id="basic-addon1">Title</span>
-        <input type="text" class="form-control" aria-label="Username" value={{singleCourse.title}} readonly>
+        <span>{{ course.title }}</span>
     </div>
     <div class="input-group">
         <span class="input-group-text" id="basic-addon1">Description</span>
-        <input type="text" class="form-control" aria-label="Username" value={{singleCourse.description}} readonly>
+        <span>{{ course.description }}</span>
     </div>
     <div class="input-group">
         <span class="input-group-text" id="basic-addon1">Duration</span>
-        <input type="text" class="form-control" aria-label="Username" value={{singleCourse.duration}} readonly>
+        <span>{{ course.duration }}</span>
     </div>
     <div class="input-group">
         <span class="input-group-text" id="basic-addon1">Base price</span>
-        <input type="text" class="form-control" aria-label="Username" value={{singleCourse.basePrice}} readonly>
+        <span>{{ course.basePrice }}</span>
+    </div>
+    <div class="input-group">
+        <span class="input-group-text" id="basic-addon1">Syllabus</span>
+        <span>{{ course.syllabus }}</span>
+    </div>
+    <div class="input-group">
+        <span class="input-group-text" id="basic-addon1">Level</span>
+        <span>{{ course.level }}</span>
+    </div>
+    <div class="input-group">
+        <span class="input-group-text" id="basic-addon1">Area ID</span>
+        <span>{{ course.areaId }}</span>
+    </div>
+    <div class="input-group">
+        <span class="input-group-text" id="basic-addon1">Area name</span>
+        <span>{{ course.areaName }}</span>
+    </div>
+    <div class="input-group">
+        <span class="input-group-text" id="basic-addon1">Creation Date</span>
+        <span>{{ course.creationDate }}</span>
     </div>
     <div class="input-group">
         <span class="input-group-text" id="basic-addon1">Grants certifications</span>
-        <input type="check" class="form-control" aria-label="Username" value={{singleCourse.grantsCertification}} readonly>
+        <span>{{ course.grantsCertification }}</span>
     </div>
-</div> 
+</div>
