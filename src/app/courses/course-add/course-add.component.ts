@@ -14,12 +14,24 @@ import { DidactisService } from '../didactis.service';
 })
 export class CourseAddComponent implements OnInit {
 
-  course:Course = new Course();
+  course:Course;
   areas:Area[] = [];
   levels: {value : number, label:string}[];
   constructor(private service:DidactisService, private router:Router, private route:ActivatedRoute) { 
     this.levels = this.getLevels();
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    this.course = new Course();
     this.course.level = Level.BEGINNER;
+    if (id != 0)
+    {
+      this.service.getCourseById(id)
+                  .subscribe({
+                    next: c => this.course = c,
+                    error: err => console.log(err)
+                  })
+      //this.course.level = Number(this.course.level);
+      console.log(this.course.level)    
+    }
   }
 
   ngOnInit(): void {

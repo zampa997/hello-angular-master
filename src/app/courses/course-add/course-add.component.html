@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container mt-5">
     <form novalidate (ngSubmit)="save(addCourseForm)" #addCourseForm="ngForm">
-        <label for="title">Titolo</label>
-        <input type="text" id="title" name="title" required minlength="5" [(ngModel)]="course.title"
+        <label for="title" class="form-label">Titolo</label>
+        <input type="text" class="form-control" id="title" name="title" required minlength="5" [(ngModel)]="course.title"
             #courseTitle="ngModel"
             [ngClass]="{ 'is-invalid' : ( courseTitle.touched || courseTitle.dirty ) && !courseTitle.valid }">
         <span class="invalid-feedback">
@@ -9,8 +9,8 @@
             <span *ngIf="courseTitle.errors?.minlength"> Il titolo deve essere almeno di 5 caratteri. </span>
         </span>
 
-        <label for="description">Descrizione</label>
-        <input type="text" id="description" name="description" required minlength="10" [(ngModel)]="course.description"
+        <label for="description"class="form-label">Descrizione</label>
+        <input type="text" class="form-control" id="description" name="description" required minlength="10" [(ngModel)]="course.description"
             #courseDescription="ngModel"
             [ngClass]="{ 'is-invalid' : ( courseDescription.touched || courseDescription.dirty ) && !courseDescription.valid }">
         <span class="invalid-feedback">
@@ -19,40 +19,40 @@
             </span>
         </span>
 
-        <label for="duration">Durata</label>
-        <input type="number" id="duration" name="duration" [(ngModel)]="course.duration" #courseDuration="ngModel"
+        <label for="duration"class="form-label">Durata</label>
+        <input type="number" class="form-control" id="duration" name="duration" [(ngModel)]="course.duration" #courseDuration="ngModel"
             [ngClass]="{ 'is-invalid' : ( courseDuration.touched || courseDuration.dirty ) && !courseDuration.valid }">
         <span class="invalid-feedback">
             <span *ngIf="courseDuration.errors?.required"> La durata è obbligatorio. </span>
         </span>
 
-        <label for="basePrice">Prezzo base</label>
-        <input type="number" id="basePrice" name="basePrice" [(ngModel)]="course.basePrice" #courseBasePrice="ngModel"
+        <label for="basePrice"class="form-label">Prezzo base</label>
+        <input type="number" class="form-control" id="basePrice" name="basePrice" [(ngModel)]="course.basePrice" #courseBasePrice="ngModel"
             [ngClass]="{ 'is-invalid' : ( courseBasePrice.touched || courseBasePrice.dirty ) && !courseBasePrice.valid }">
         <span class="invalid-feedback">
             <span *ngIf="courseBasePrice.errors?.required"> Il prezzo base è obbligatorio. </span>
         </span>
         
-        <label for="creationDate">Data di creazione</label>
-        <input type="date" id="creationDate" name="creationDate" [(ngModel)]="course.creationDate" #courseCreationDate="ngModel"
+        <label for="creationDate"class="form-label">Data di creazione</label>
+        <input type="date" class="form-control" id="creationDate" name="creationDate" [(ngModel)]="course.creationDate" #courseCreationDate="ngModel"
             [ngClass]="{ 'is-invalid' : ( courseCreationDate.touched || courseCreationDate.dirty ) && !courseCreationDate.valid }">
         <span class="invalid-feedback">
             <span *ngIf="courseCreationDate.errors?.required"> La data di creazione è obbligatorio. </span>
         </span>
 
-        <label for="areaId">Area</label>
-        <select id="areaId" name="areaId" [(ngModel)]="course.areaId">
+        <label for="areaId"class="form-label">Area</label>
+        <select id="areaId" class="form-select" name="areaId" [(ngModel)]="course.areaId">
             <option *ngFor="let area of areas" [value]="area.id"> {{ area.name }} </option>
         </select>
 
-        <label for="level">Livello</label>
-        <select id="level" name="level" [(ngModel)]="course.level">
+        <label for="level"class="form-label">Livello</label> 
+        <select id="level" class="form-select" name="level" [(ngModel)]="course.level">
             <option *ngFor="let level of levels" [value]="level.value"> {{ level.label }}</option>
-        </select>
+        </select> 
 
-        <label for="grantsCertification">Certificazione </label>
-        <input type="checkbox" id="grantsCertification" name="grantsCertification">
-        
-        <input type="submit" value="invia" [title]="addCourseForm.valid ? 'crea nuovo corso' : 'invio disabilitato finchè i dati non sono validi'" [disabled]="!addCourseForm.valid">
+        <label for="grantsCertification"class="form-label">Certificazione</label>
+        <input type="checkbox" class="form-check-input ms-3" id="grantsCertification" name="grantsCertification">
+        <br>
+        <input type="submit" class="btn btn-primary" value="invia" [title]="addCourseForm.valid ? 'crea nuovo corso' : 'invio disabilitato finchè i dati non sono validi'" [disabled]="!addCourseForm.valid">
     </form>
 </div>

@@ -15,7 +15,7 @@ const routes: Routes = [
 
   { path: 'students', component: StudentListComponent, data: { animationState: 'Two' } },
 
-  { path: 'addcourse', component: CourseAddComponent, data: { animationState: 'Add' } },
+  { path: 'addcourse/:id', component: CourseAddComponent, data: { animationState: 'Add' } },
   
   {path: 'coursedetails/:id', component: CourseDetailsListComponent, data: { animationState: 'ThreeDetails' }},
 
