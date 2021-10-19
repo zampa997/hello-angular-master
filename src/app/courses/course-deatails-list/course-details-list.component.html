@@ -81,4 +81,33 @@
         <span class="input-group-text" id="basic-addon1">Grants certifications</span>
         <span>{{ course.grantsCertification }}</span>
     </div>
+    <div class="input-group">
+        <span class="input-group-text" id="basic-addon1">Editions:</span>
+        <button class="btn btn-info" id="view">View</button>
+        <button class="btn btn-primary" [routerLink]="['/addedition']">Add</button>
+    </div>
+
+    <table class="table table-dark table-striped table-hover"
+    style="width: 90%; user-select: none; -moz-user-select: none;">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">code</th>
+        <th scope="col">description</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let e of editions" >
+        <td>{{ e.id }}</td>
+        <td>{{ e.code }}</td>
+        <td>{{ e.description }}</td>
+        <td style="text-align: right;">
+          <div class="btn-group" role="group" aria-label="Basic example">
+            
+          </div>
+        </td> 
+      </tr>
+    </tbody>
+  </table>
 </div>

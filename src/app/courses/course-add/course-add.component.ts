@@ -3,8 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Area } from 'src/app/DTOs/area';
+import { Course } from 'src/app/DTOs/course';
 import { Level } from 'src/app/DTOs/level';
-import { Course } from '../course';
 import { DidactisService } from '../didactis.service';
 
 @Component({
@@ -14,32 +14,36 @@ import { DidactisService } from '../didactis.service';
 })
 export class CourseAddComponent implements OnInit {
 
-  course:Course;
+  course:Course; 
   areas:Area[] = [];
   levels: {value : number, label:string}[];
+  id:number = 0; 
+
   constructor(private service:DidactisService, private router:Router, private route:ActivatedRoute) { 
     this.levels = this.getLevels();
-    const id = Number(this.route.snapshot.paramMap.get('id'));
     this.course = new Course();
-    this.course.level = Level.BEGINNER;
-    if (id != 0)
-    {
-      this.service.getCourseById(id)
-                  .subscribe({
-                    next: c => this.course = c,
-                    error: err => console.log(err)
-                  })
-      //this.course.level = Number(this.course.level);
-      console.log(this.course.level)    
-    }
+    this.course.level = Level.INTERMEDIATE;
   }
 
   ngOnInit(): void {
+    this.id=Number(this.route.snapshot.paramMap.get('id'));
     this.service.getAreas()
                 .subscribe({
                   next: as => this.areas = as,
                   error: err => console.log(err)
                 })
+    
+    if (this.id != 0)
+    {
+      this.service.getCourseById(this.id)
+                  .subscribe({
+                    next: c =>{
+                      this.course = c;
+                      //console.log(this.course);
+                    },
+                    error: err => console.log(err)
+                })
+    }
   }
 
   getLevels() :{value : number, label:string}[] {
@@ -48,20 +52,35 @@ export class CourseAddComponent implements OnInit {
                           .map( x => {
                             return { value: Number(x), label: Level[Number(x)] };
                           });
-    console.log(enumArray);
     return enumArray;
   }
   save(form:NgForm){
-    console.log(form.value);
-    this.course.level = form.value
-    this.service.createCourse(this.course)
-        .subscribe({
-          next: cs => {
-            this.course = cs;
-            alert("corso creato con id: "+this.course.id);
-            this.router.navigate(["/courses"])
-          },
-          error: err => console.log(err)
-        });
+    //this.course.level = form.value
+    this.course.level = Number(this.course.level)
+    this.course.areaId = Number(this.course.areaId)
+    console.log(this.course)
+    if (this.id == 0)
+    {
+      this.service.createCourse(this.course)
+      .subscribe({
+        next: cs => {
+          this.course = cs;
+          alert("corso creato con id: "+this.course.id);
+          this.router.navigate(["/courses"])
+        },
+        error: err => console.log(err)
+      });
+    }
+    else{
+      this.service.updateCourse(this.course)
+      .subscribe({
+        next: cs => {
+          this.course = cs;
+          alert("corso aggiornato con id: "+this.course.id);
+          this.router.navigate(["/courses"])
+        },
+        error: err => console.log(err)
+      });
+    }  
   }
 }

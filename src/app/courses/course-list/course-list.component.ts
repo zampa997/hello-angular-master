@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Course } from '../course';
+import { Course } from 'src/app/DTOs/course';
 import { DidactisService } from '../didactis.service';
 
 
@@ -15,9 +15,9 @@ import { DidactisService } from '../didactis.service';
 export class CourseListComponent implements OnInit {
 
   public courses:Course[] = [];
+  public course:Course = new Course();
 
-
-  constructor(private service:DidactisService) { console.log('courseListConstructor');
+  constructor(private service:DidactisService, private router:Router, private route:ActivatedRoute) { console.log('courseListConstructor');
   }
 
 
@@ -31,7 +31,22 @@ export class CourseListComponent implements OnInit {
       error: err => console.log(err)
     });
   }
-
+  clickMethod(id: number) {
+    if(window.confirm("Are you sure to delete "+id)) {
+      console.log(this.remove(id));
+    }
+  }
+  remove(id: number){
+    console.log(id)
+    let obsCourse:Observable<Course> = this.service.deleteCourse(id);
+    obsCourse.subscribe({
+      next: c => {
+        this.course = c;
+        this.ngOnInit();
+      },
+      error: err => console.log(err)
+    });
+  }
 /*export class CourseListComponent{
    courses = [
     {

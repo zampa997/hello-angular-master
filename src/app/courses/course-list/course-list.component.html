@@ -12,15 +12,15 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let c of courses">
+      <tr *ngFor="let c of courses" >
         <td>{{ c.id }}</td>
         <td>{{ c.title }}</td>
         <td>{{ c.description }}</td>
         <td style="text-align: right;">
           <div class="btn-group" role="group" aria-label="Basic example">
             <button type="button" class="btn btn-primary" [routerLink]="['/coursedetails', c.id]">Info</button>
-            <button type="button" class="btn btn-warning" [routerLink]="['/coursedetails', c.id]">Modify</button>
-            <button type="button" class="btn btn-danger">Delete</button>
+            <button type="button" class="btn btn-warning" [routerLink]="['/addcourse', c.id]">Modify</button>
+            <button type="button" class="btn btn-danger" (click)="clickMethod(c.id)">Delete</button>
           </div>
         </td> 
       </tr>

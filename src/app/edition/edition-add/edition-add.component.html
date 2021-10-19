@@ -1,0 +1,54 @@
+<div class="container mt-5">
+    <form novalidate (ngSubmit)="save()" [formGroup]="editionForm">
+        <label for="code"class="form-label">Code</label>
+            <input type="text" class="form-control myshadow" id="code" name="code" formControlName="code"
+                [ngClass]="{'is-invalid': (editionForm.get('code')?.touched || 
+                                            editionForm.get('code')?.dirty) &&
+                                            !editionForm.get('code')?.valid }">
+            <span class="invalid-feedback">
+                <span *ngIf="editionForm.get('code')?.errors?.required">Codice edizione obbligatorio</span>
+            </span>
+
+            <label for="description"class="form-label">Description</label>
+            <input type="text" class="form-control myshadow" id="description" name="description" formControlName="description"
+                [ngClass]="{'is-invalid': (editionForm.get('description')?.touched || 
+                                            editionForm.get('description')?.dirty) &&
+                                            !editionForm.get('description')?.valid }">
+            <span class="invalid-feedback">
+                <span *ngIf="editionForm.get('description')?.errors?.required">Descrizione obbligatorio</span>
+            </span>
+
+            <label for="realPrice"class="form-label">Prezzo</label>
+            <input type="text" class="form-control myshadow" id="realPrice" name="realPrice" formControlName="realPrice"
+                [ngClass]="{'is-invalid': (editionForm.get('realPrice')?.touched || 
+                                            editionForm.get('realPrice')?.dirty) &&
+                                            !editionForm.get('realPrice')?.valid }">
+            <span class="invalid-feedback">
+                <span *ngIf="editionForm.get('realPrice')?.errors?.required">prezzo obbligatorio</span>
+            </span>
+
+            <label for="startDate"class="form-label">Data di inizio</label>
+            <input type="date" class="form-control myshadow" id="startDate" name="startDate" formControlName="startDate"
+                [ngClass]="{'is-invalid': (editionForm.get('startDate')?.touched || 
+                                            editionForm.get('startDate')?.dirty) &&
+                                            !editionForm.get('startDate')?.valid }">
+            <span class="invalid-feedback">
+                <span *ngIf="editionForm.get('realPrice')?.errors?.required">data inizio obbligatorio</span>
+            </span>
+
+           <!-- docente + corso-->
+            <label for="docenteId"class="form-label">Teachers</label>
+            <select id="docenteId" class="form-select myshadow" name="docenteId" formControlName="docenteId">
+                <option *ngFor="let teacher of teachers" [value]="teacher.id"> {{ teacher.firstname+' '+teacher.surname }} </option>
+            </select>
+
+            <label for="corsoId"class="form-label">Courses</label>
+            <select id="docenteId" class="form-select myshadow" name="corsoId" formControlName="corsoId">
+                <option *ngFor="let course of courses" [value]="course.id"> {{ course.title }} </option>
+            </select>
+
+            <input type="submit" class="btn btn-info"value="invia"
+                    [title]="editionForm.valid? 'Crea edizione' : 'Disabilitata finchè i dati non sono corretti'"
+                    [disabled]="!editionForm.valid">
+    </form>
+</div>

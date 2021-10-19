@@ -10,7 +10,7 @@
 }
 .course_card{
   width: 1000px;
-  height: 700px;
+  height: 900px;
   background-color: white;
   display:inline;
   float:left;
@@ -23,7 +23,7 @@
 .image_card{
   text-align: center;
   width: 300px;
-  height: 700px;
+  height: 900px;
   background-color:red;
   margin-left:300px;
   display:inline;
@@ -70,4 +70,7 @@ a:hover {
   margin-top: 15px;
   margin-bottom: 15px;
   width:90%;
+}
+.table{
+  margin-left: 50px;
 }

@@ -2,15 +2,20 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http
 import { Injectable } from "@angular/core";
 import { Observable, throwError } from "rxjs";
 import { catchError, tap } from "rxjs/operators";
+import { CourseEdition } from 'src/app/DTOs/edition';
 import { Area } from "../DTOs/area";
-import { Course } from "./course";
+import { Course } from "../DTOs/course";
+import { Teacher } from "../DTOs/teacher";
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class DidactisService {
-  private courseUrl = 'https://localhost:44331/api/course';
+  private baseUrl = 'https://localhost:44331/api/';
+  private courseUrl = this.baseUrl+'course';
+  private courseEditionUrl =  this.baseUrl+'courseEdition';
+  private teacherUrl = this.baseUrl+'instructor'
   //private http:HttpClient;
   constructor(private http: HttpClient){
     this.http = http;
@@ -38,9 +43,36 @@ export class DidactisService {
       "Content-Type": "application/json"
     });
     return this.http.post<Course>(this.courseUrl, course, { headers : hs })
-                .pipe( tap(data => console.log(JSON.stringify(data))),
-                catchError(this.handleError));
+                    .pipe( tap(data => console.log(JSON.stringify(data))),
+                    catchError(this.handleError));
   }
+  updateCourse(course:Course):Observable<Course>{
+    const hs = new HttpHeaders({
+      "Content-Type": "application/json"
+    });
+    return this.http.put<Course>(this.courseUrl, course, { headers : hs })
+                    .pipe( tap(data => console.log(JSON.stringify(data))),
+                    catchError(this.handleError));
+  }
+  deleteCourse(id: number):Observable<Course>{
+    return this.http.delete<Course>(`${this.courseUrl}/${id}`)
+                    .pipe( tap(data => console.log(JSON.stringify(data))),
+                    catchError(this.handleError));
+  }
+
+getEditionsByCourseId(id: number):Observable<CourseEdition[]>{
+  return this.http.get<CourseEdition[]>(`${this.courseEditionUrl}/course/${id}`)
+            .pipe( tap(data => console.log(JSON.stringify(data))),
+            catchError(this.handleError)
+            );
+}
+getTeachers():Observable<Teacher[]>{
+  return this.http.get<Teacher[]>(this.teacherUrl)
+                  .pipe( tap(data => console.log(JSON.stringify(data))),
+                  catchError(this.handleError)
+                  );
+}
+
   private handleError(errorResponse:HttpErrorResponse) : Observable<never>{ //lancia un'eccezione
     let errorMessage = '';
     if (errorResponse.error instanceof ErrorEvent) {
