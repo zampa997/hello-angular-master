@@ -47,7 +47,7 @@
 
         <label for="level">Livello</label>
         <select id="level" name="level" [(ngModel)]="course.level">
-            <option *ngFor="let level of getLevels()" [value]="level.value"> {{ level.label }}</option>
+            <option *ngFor="let level of levels" [value]="level.value"> {{ level.label }}</option>
         </select>
 
         <label for="grantsCertification">Certificazione </label>

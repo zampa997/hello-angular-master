@@ -1,5 +1,6 @@
-import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { stringify } from "querystring";
 import { Observable, throwError } from "rxjs";
 import { catchError, tap } from "rxjs/operators";
 import { Area } from "../DTOs/area";
@@ -32,6 +33,14 @@ export class DidactisService {
             .pipe( tap(data => console.log(JSON.stringify(data))),
             catchError(this.handleError)
             );
+  }
+  createCourse(course:Course):Observable<Course>{
+    const hs = new HttpHeaders({
+      "Content-Type": "application/json"
+    });
+    return this.http.post<Course>(this.courseUrl, course, { headers : hs })
+                .pipe( tap(data => console.log(JSON.stringify(data))),
+                catchError(this.handleError));
   }
   private handleError(errorResponse:HttpErrorResponse) : Observable<never>{ //lancia un'eccezione
     let errorMessage = '';
