@@ -73,6 +73,16 @@ getTeachers():Observable<Teacher[]>{
                   );
 }
 
+createEdition(edition:CourseEdition):Observable<CourseEdition>{
+  const hs = new HttpHeaders({
+    "Content-Type": "application/json"
+  });
+  return this.http.post<CourseEdition>(this.courseEditionUrl, edition, { headers: hs })
+                  .pipe( tap(data => console.log(JSON.stringify(data))),
+                  catchError(this.handleError)
+  );
+}
+
   private handleError(errorResponse:HttpErrorResponse) : Observable<never>{ //lancia un'eccezione
     let errorMessage = '';
     if (errorResponse.error instanceof ErrorEvent) {

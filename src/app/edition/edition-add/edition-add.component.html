@@ -2,50 +2,44 @@
     <form novalidate (ngSubmit)="save()" [formGroup]="editionForm">
         <label for="code"class="form-label">Code</label>
             <input type="text" class="form-control myshadow" id="code" name="code" formControlName="code"
-                [ngClass]="{'is-invalid': (editionForm.get('code')?.touched || 
-                                            editionForm.get('code')?.dirty) &&
-                                            !editionForm.get('code')?.valid }">
-            <span class="invalid-feedback">
-                <span *ngIf="editionForm.get('code')?.errors?.required">Codice edizione obbligatorio</span>
+                [ngClass]="{'is-invalid': checkValid('code')}">
+            <span *ngIf="checkValid('code')" class="invalid-feedback">
+                <span *ngIf="checkRequired('code')">Codice edizione obbligatorio</span>
             </span>
 
             <label for="description"class="form-label">Description</label>
             <input type="text" class="form-control myshadow" id="description" name="description" formControlName="description"
-                [ngClass]="{'is-invalid': (editionForm.get('description')?.touched || 
-                                            editionForm.get('description')?.dirty) &&
-                                            !editionForm.get('description')?.valid }">
-            <span class="invalid-feedback">
-                <span *ngIf="editionForm.get('description')?.errors?.required">Descrizione obbligatorio</span>
+                [ngClass]="{'is-invalid': checkValid('description')}">
+            <span *ngIf="checkValid('description')" class="invalid-feedback">
+                <span *ngIf="checkRequired('description')">Descrizione obbligatorio</span>
             </span>
 
             <label for="realPrice"class="form-label">Prezzo</label>
-            <input type="text" class="form-control myshadow" id="realPrice" name="realPrice" formControlName="realPrice"
-                [ngClass]="{'is-invalid': (editionForm.get('realPrice')?.touched || 
-                                            editionForm.get('realPrice')?.dirty) &&
-                                            !editionForm.get('realPrice')?.valid }">
-            <span class="invalid-feedback">
-                <span *ngIf="editionForm.get('realPrice')?.errors?.required">prezzo obbligatorio</span>
+            <input type="number" class="form-control myshadow" id="realPrice" name="realPrice" formControlName="realPrice"
+                [ngClass]="{'is-invalid': checkValid('realPrice') }">
+            <span *ngIf="checkValid('realPrice')" class="invalid-feedback">
+                <span *ngIf="checkRequired('realPrice')">prezzo obbligatorio</span>
             </span>
 
             <label for="startDate"class="form-label">Data di inizio</label>
             <input type="date" class="form-control myshadow" id="startDate" name="startDate" formControlName="startDate"
-                [ngClass]="{'is-invalid': (editionForm.get('startDate')?.touched || 
-                                            editionForm.get('startDate')?.dirty) &&
-                                            !editionForm.get('startDate')?.valid }">
-            <span class="invalid-feedback">
-                <span *ngIf="editionForm.get('realPrice')?.errors?.required">data inizio obbligatorio</span>
+                [ngClass]="{'is-invalid': checkValid('startDate') }">
+            <span *ngIf="checkValid('startDate')" class="invalid-feedback">
+                <span *ngIf="checkRequired('startDate')">data inizio obbligatorio</span>
             </span>
 
            <!-- docente + corso-->
-            <label for="docenteId"class="form-label">Teachers</label>
-            <select id="docenteId" class="form-select myshadow" name="docenteId" formControlName="docenteId">
+            <label for="InstructorId"class="form-label">Teachers</label>
+            <select id="instructorId" class="form-select myshadow" name="instructorId" formControlName="instructorId">
+                <option value="0" disabled>Scegli un Instruttore</option>
                 <option *ngFor="let teacher of teachers" [value]="teacher.id"> {{ teacher.firstname+' '+teacher.lastname }} </option>
             </select>
 
-            <label for="corsoId"class="form-label">Courses</label>
-            <select id="docenteId" class="form-select myshadow" name="corsoId" formControlName="corsoId">
-                <option *ngFor="let course of courses" [value]="course.id"> {{ course.title }} </option>
+            <label for="courseId"class="form-label">Courses</label>
+            <select id="courseId" class="form-select myshadow" name="courseId" formControlName="courseId">
+                <option *ngFor="let c of courses" [value]="c.id"> {{ c.title }} </option>
             </select>
+
             <div class="btn-group" role="group" aria-label="Basic example">
                 <input type="submit" class="btn btn-info"value="invia"
                         [title]="editionForm.valid? 'Crea edizione' : 'Disabilitata finchè i dati non sono corretti'"

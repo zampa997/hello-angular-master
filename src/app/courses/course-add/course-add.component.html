@@ -15,7 +15,7 @@
             [ngClass]="{ 'is-invalid' : ( courseDescription.touched || courseDescription.dirty ) && !courseDescription.valid }">
         <span class="invalid-feedback">
             <span *ngIf="courseDescription.errors?.required"> La descrizione è obbligatorio. </span>
-            <span *ngIf="courseDescription.errors?.minlength"> LA descrizione deve essere almeno di 10 caratteri.
+            <span *ngIf="courseDescription.errors?.minlength"> La descrizione deve essere almeno di 10 caratteri.
             </span>
         </span>
 
@@ -56,6 +56,9 @@
             <br>
         </div>
         
-        <input type="submit" class="btn btn-info"value="invia" [title]="addCourseForm.valid ? 'crea nuovo corso' : 'invio disabilitato finchè i dati non sono validi'" [disabled]="!addCourseForm.valid">
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <input type="submit" class="btn btn-info"value="invia" [title]="addCourseForm.valid ? 'crea nuovo corso' : 'invio disabilitato finchè i dati non sono validi'" [disabled]="!addCourseForm.valid">
+            <button (click)="onBack()" class="btn btn-warning">Back</button>
+        </div>
     </form>
 </div>

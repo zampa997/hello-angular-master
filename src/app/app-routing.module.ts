@@ -21,8 +21,8 @@ const routes: Routes = [
   {path: 'coursedetails/:id', component: CourseDetailsListComponent, data: { animationState: 'ThreeDetails' }},
 
   {path: 'studentdetails', component: StudentDetailsListComponent, data: { animationState: 'TwoDetails' }},
-  
-  {path: 'addedition', component: EditionAddComponent, data: { animationState: 'ThreeDetailsAddEdition' }},
+
+  {path: 'addedition/:id', component: EditionAddComponent, data: { animationState: 'ThreeDetailsAddEdition' }},
 
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 

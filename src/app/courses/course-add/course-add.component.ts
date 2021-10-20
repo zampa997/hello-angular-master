@@ -83,4 +83,7 @@ export class CourseAddComponent implements OnInit {
       });
     }  
   }
+  onBack(): void{
+    this.router.navigate(["/courses"])
+  }
 }
