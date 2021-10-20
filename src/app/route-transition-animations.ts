@@ -51,7 +51,7 @@ export const routeTransitionAnimations = trigger('triggerName', [transition('One
           query(':enter', [animate('0.3s ease-out', style({ transform: 'perspective(500px) translateY(0%)', opacity: 1 }))])
          ]),
          query(':enter', animateChild())
-       ]),transition('ThreeDetails => Three, ThreeDetails => Two, ThreeDetails => one,TwoDetails => Three, TwoDetails => Two, TwoDetails => one, Add=>Three,Add=>Two,Add=>One,ThreeDetailsAddEdition=>Three, ThreeDetailsAddEdition=>Two, ThreeDetailsAddEdition=>One', [   
+       ]),transition('ThreeDetails => Three, ThreeDetails => Two, ThreeDetails => one,TwoDetails => Three, TwoDetails => Two, TwoDetails => one,ThreeDetailsAddEdition=>Three, ThreeDetailsAddEdition=>Two, ThreeDetailsAddEdition=>One', [   
         style({ position: 'relative' }),
         query(':enter, :leave', [
           style({

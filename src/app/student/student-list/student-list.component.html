@@ -14,11 +14,12 @@
         <tr *ngFor="let c of students">
           <td>{{ c.id }}</td>
           <td>{{ c.firstname }}</td>
-          <td>{{ c.lastname }}</td>
+          <td>{{ c.surname }}</td>
           <td>{{ c.email }}</td>
           <td style="text-align: right;">
             <div class="btn-group" role="group" aria-label="Basic example">
-              <button type="button" class="btn btn-primary" routerLink="/studentdetails">Info</button>
+              <button type="button" class="btn btn-primary" [routerLink]="['/studentdetails', c.id]">Info</button>
+              <button type="button" class="btn btn-success" [routerLink]="['/enrollmentstudent']">Enroll</button>
               <button type="button" class="btn btn-warning">Modify</button>
               <button type="button" class="btn btn-danger">Delete</button>
             </div>

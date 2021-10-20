@@ -5,6 +5,7 @@ import { catchError, tap } from "rxjs/operators";
 import { CourseEdition } from 'src/app/DTOs/edition';
 import { Area } from "../DTOs/area";
 import { Course } from "../DTOs/course";
+import { Student } from "../DTOs/student";
 import { Teacher } from "../DTOs/teacher";
 
 
@@ -15,7 +16,8 @@ export class DidactisService {
   private baseUrl = 'https://localhost:44331/api/';
   private courseUrl = this.baseUrl+'course';
   private courseEditionUrl =  this.baseUrl+'courseEdition';
-  private teacherUrl = this.baseUrl+'instructor'
+  private teacherUrl = this.baseUrl+'instructor';
+  private studentUrl = this.baseUrl+'student';
   //private http:HttpClient;
   constructor(private http: HttpClient){
     this.http = http;
@@ -71,6 +73,26 @@ getTeachers():Observable<Teacher[]>{
                   .pipe( tap(data => console.log(JSON.stringify(data))),
                   catchError(this.handleError)
                   );
+}
+getLastCourses(n:number):Observable<Course[]>{
+  return this.http.get<Course[]>(`${this.courseUrl}/lastCourse/${n}`)
+            .pipe( tap(data => console.log(JSON.stringify(data))),
+            catchError(this.handleError)
+            );
+}
+
+getStudents():Observable<Student[]>{
+  return this.http.get<Student[]>(this.studentUrl)
+                  .pipe( tap(data => console.log(JSON.stringify(data))),
+                  catchError(this.handleError)
+                  );
+}
+
+getStudentById(id:Number): Observable<Student>{
+  return this.http.get<Student>(`${this.studentUrl}/${id}`)
+          .pipe( tap(data => console.log(JSON.stringify(data))),
+          catchError(this.handleError)
+          );
 }
 
 createEdition(edition:CourseEdition):Observable<CourseEdition>{

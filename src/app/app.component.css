@@ -11,6 +11,7 @@ body{
     -moz-transform:rotate(30deg);
     -o-transform:rotate(30deg); 
     right:1800px;
+    z-index:-991;
     top: 600px;
     box-shadow: 0px 0px 40px 5px black;
 }
@@ -24,9 +25,15 @@ body{
     -o-transform:rotate(150deg); 
     right:-800px;
     top: -500px;
-    z-index: -999;
+    z-index: -990;
     box-shadow: 0px 0px 20px 5px black;
+    
+    
 }
 nav{
     box-shadow: 0px 0px 10px 5px black;
+    position: fixed;
+    left:0;
+    top:0;
+    width: 100%;
 }

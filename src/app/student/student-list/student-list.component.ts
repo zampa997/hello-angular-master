@@ -1,4 +1,7 @@
-import { Component, TestabilityRegistry } from '@angular/core';
+import { Component, OnInit, TestabilityRegistry } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { DidactisService } from 'src/app/courses/didactis.service';
+import { Student } from 'src/app/DTOs/student';
 
 
 @Component({
@@ -9,32 +12,20 @@ import { Component, TestabilityRegistry } from '@angular/core';
 
 
 
-export class StudentListComponent {
-  students = [
-    {
-      id: 1,
-      firstname: 'Franco',
-      lastname:'Bellavilla',
-      email:'francobellavilla@gmail.com'
-    },
-    {
-      id: 2,
-      firstname: 'Carla',
-      lastname:'Verdi',
-      email:'carlaverdi@gmail.com'
-    },
-    {
-      id: 3,
-      firstname: 'Gianfrancioschio',
-      lastname:'bello',
-      email:'Gianfrancioschiobello@gmail.com'
-    },
-    {
-      id: 4,
-      firstname: 'Mario',
-      lastname:'Rossi',
-      email:'mariorossi@gmail.com'
-    }
-  ];
+export class StudentListComponent implements OnInit{
+  students:Student[] = []
+  
+  constructor(private service:DidactisService, private router:Router, private route:ActivatedRoute) {
+  }
+  ngOnInit(): void {
+    this.service.getStudents()
+        .subscribe({
+          next: c => {
+            this.students = c;
+          },
+          error: error => console.log(error)
+        });
+  }
+  
 }
 
