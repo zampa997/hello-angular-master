@@ -34,52 +34,50 @@
     <img src="\assets\imagines\online-course.png" alt="STOCAZZO" class="responsive-img" style="width: 200px;">
 </div>
 <div class="course_card" *ngIf="course">
-
-
     <a (click)="onBack()" class="previous">&laquo;</a>
     <div class="input-group">
         <span class="input-group-text" id="basic-addon1">ID</span>
-        <span>{{ course.id }}</span>
+        <span class="info"> {{ course.id }}</span>
     </div>
     <div class="input-group">
         <span class="input-group-text" id="basic-addon1">Title</span>
-        <span>{{ course.title }}</span>
+        <span class="info"> {{ course.title }}</span>
     </div>
     <div class="input-group">
         <span class="input-group-text" id="basic-addon1">Description</span>
-        <span>{{ course.description }}</span>
+        <span class="info">{{ course.description }}</span>
     </div>
     <div class="input-group">
         <span class="input-group-text" id="basic-addon1">Duration</span>
-        <span>{{ course.duration }}</span>
+        <span class="info">{{ course.duration }}</span>
     </div>
     <div class="input-group">
         <span class="input-group-text" id="basic-addon1">Base price</span>
-        <span>{{ course.basePrice }}</span>
+        <span class="info">{{ course.basePrice }}</span>
     </div>
     <div class="input-group">
         <span class="input-group-text" id="basic-addon1">Syllabus</span>
-        <span>{{ course.syllabus }}</span>
+        <span class="info">{{ course.syllabus }}</span>
     </div>
     <div class="input-group">
         <span class="input-group-text" id="basic-addon1">Level</span>
-        <span>{{ course.level }}</span>
+        <span class="info">{{ course.level }}</span>
     </div>
     <div class="input-group">
         <span class="input-group-text" id="basic-addon1">Area ID</span>
-        <span>{{ course.areaId }}</span>
+        <span class="info">{{ course.areaId }}</span>
     </div>
     <div class="input-group">
         <span class="input-group-text" id="basic-addon1">Area name</span>
-        <span>{{ course.areaName }}</span>
+        <span class="info">{{ course.areaName }}</span>
     </div>
     <div class="input-group">
         <span class="input-group-text" id="basic-addon1">Creation Date</span>
-        <span>{{ course.creationDate }}</span>
+        <span class="info">{{ course.creationDate }}</span>
     </div>
     <div class="input-group">
         <span class="input-group-text" id="basic-addon1">Grants certifications</span>
-        <span>{{ course.grantsCertification }}</span>
+        <span class="info">{{ course.grantsCertification }}</span>
     </div>
     <div class="input-group">
         <span class="input-group-text" id="basic-addon1">Editions:</span>
