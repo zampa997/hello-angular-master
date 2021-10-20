@@ -107,11 +107,17 @@ createEdition(edition:CourseEdition):Observable<CourseEdition>{
   );
 }
 
-getEnrollmentByStudentId(id:number):Observable<Enroll[]>{
-  return this.http.get<Enroll[]>(`${this.enrollUrl}/student/${id}`)
+getSubscribedEnrollmentByStudentId(id:number):Observable<Enroll[]>{
+  return this.http.get<Enroll[]>(`${this.enrollUrl}/studentSubscribed/${id}`)
               .pipe( tap(data => console.log(JSON.stringify(data))),
               catchError(this.handleError)
               );
+}
+getAvailableEnrollmentByStudentId(id:number):Observable<Enroll[]>{
+    return this.http.get<Enroll[]>(`${this.enrollUrl}/studentAvailable/${id}`)
+            .pipe( tap(data => console.log(JSON.stringify(data))),
+            catchError(this.handleError)
+            );
 }
 
   private handleError(errorResponse:HttpErrorResponse) : Observable<never>{ //lancia un'eccezione
