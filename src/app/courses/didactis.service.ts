@@ -5,6 +5,7 @@ import { catchError, tap } from "rxjs/operators";
 import { CourseEdition } from 'src/app/DTOs/edition';
 import { Area } from "../DTOs/area";
 import { Course } from "../DTOs/course";
+import { Enroll } from "../DTOs/enroll";
 import { Student } from "../DTOs/student";
 import { Teacher } from "../DTOs/teacher";
 
@@ -18,6 +19,7 @@ export class DidactisService {
   private courseEditionUrl =  this.baseUrl+'courseEdition';
   private teacherUrl = this.baseUrl+'instructor';
   private studentUrl = this.baseUrl+'student';
+  private enrollUrl = this.baseUrl+'enrollment';
   //private http:HttpClient;
   constructor(private http: HttpClient){
     this.http = http;
@@ -103,6 +105,13 @@ createEdition(edition:CourseEdition):Observable<CourseEdition>{
                   .pipe( tap(data => console.log(JSON.stringify(data))),
                   catchError(this.handleError)
   );
+}
+
+getEnrollmentByStudentId(id:number):Observable<Enroll[]>{
+  return this.http.get<Enroll[]>(`${this.enrollUrl}/student/${id}`)
+              .pipe( tap(data => console.log(JSON.stringify(data))),
+              catchError(this.handleError)
+              );
 }
 
   private handleError(errorResponse:HttpErrorResponse) : Observable<never>{ //lancia un'eccezione

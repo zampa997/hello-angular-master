@@ -17,7 +17,7 @@ const routes: Routes = [
 
   { path: 'students', component: StudentListComponent, data: { animationState: 'Two' } },
 
-  { path: 'enrollmentstudent', component: EntollmentStudentComponent, data: { animationState: 'EnrollStudent' } },
+  { path: 'enrollmentstudent/:id', component: EntollmentStudentComponent, data: { animationState: 'EnrollStudent' } },
 
   { path: 'addcourse/:id', component: CourseAddComponent, data: { animationState: 'Add' } },
   
