@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Course } from 'src/app/DTOs/course';
 import { CourseEdition } from 'src/app/DTOs/edition';
+import { Level } from 'src/app/DTOs/level';
 import { DidactisService } from '../didactis.service';
 
 @Component({
@@ -22,7 +23,7 @@ import { DidactisService } from '../didactis.service';
       {
         this.courseService.getCourseById(id)
         .subscribe({
-          next: c => this.course = c,
+          next: c => {this.course = c},
           error: error => console.log(error)
         });
         this.courseService.getEditionsByCourseId(id)

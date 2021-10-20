@@ -10,7 +10,7 @@
 }
 .course_card{
   width: 1000px;
-  height: 900px;
+  height: 1000px;
   background-color: white;
   display:inline;
   float:left;
@@ -23,7 +23,7 @@
 .image_card{
   text-align: center;
   width: 300px;
-  height: 900px;
+  height: 1000px;
   background-color:red;
   margin-left:300px;
   display:inline;
@@ -67,10 +67,19 @@ a:hover {
 }
 .input-group{
   margin-left: 50px;
-  margin-top: 15px;
-  margin-bottom: 15px;
+  margin-top: 25px;
+  margin-bottom: 10px;
   width:90%;
 }
 .table{
   margin-left: 50px;
+}
+.info{
+  background-color: rgba(0, 0, 0, 0.102);
+  width: 80%;
+  border-radius: 5px;
+  text-align: center;
+}
+span{
+  width: 170px;
 }

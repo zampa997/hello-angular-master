@@ -44,4 +44,7 @@ export class EditionAddComponent implements OnInit {
   save(){
     console.log(this.editionForm.value)
   }
+  onBack(): void{
+    this.router.navigate(["/courses"])
+  } 
 }
