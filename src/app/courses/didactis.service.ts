@@ -16,7 +16,7 @@ import { Teacher } from "../DTOs/teacher";
 export class DidactisService {
   private baseUrl = 'https://localhost:44331/api/';
   private courseUrl = this.baseUrl + 'course';
-  private courseEditionUrl = this.baseUrl + 'courseEdition';
+  private courseEditionUrl = this.baseUrl + 'courseedition';
   private teacherUrl = this.baseUrl + 'instructor';
   private studentUrl = this.baseUrl + 'student';
   private enrollUrl = this.baseUrl + 'enrollment';
@@ -70,12 +70,21 @@ export class DidactisService {
         catchError(this.handleError)
       );
   }
+
+  getEditionById(id: number): Observable<CourseEdition> {
+    return this.http.get<CourseEdition>(`${this.courseEditionUrl}/${id}`)
+      .pipe(tap(data => console.log(JSON.stringify(data))),
+        catchError(this.handleError)
+      );
+  }
+
   getTeachers(): Observable<Teacher[]> {
     return this.http.get<Teacher[]>(this.teacherUrl)
       .pipe(tap(data => console.log(JSON.stringify(data))),
         catchError(this.handleError)
       );
   }
+
   getLastCourses(n: number): Observable<Course[]> {
     return this.http.get<Course[]>(`${this.courseUrl}/lastCourse/${n}`)
       .pipe(tap(data => console.log(JSON.stringify(data))),

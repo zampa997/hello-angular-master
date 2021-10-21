@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DidactisService } from 'src/app/courses/didactis.service';
 import { Course } from 'src/app/DTOs/course';
+import { CourseEdition } from 'src/app/DTOs/edition';
 import { Teacher } from 'src/app/DTOs/teacher';
 
 @Component({
@@ -15,29 +16,51 @@ export class EditionAddComponent implements OnInit {
   editionForm: FormGroup;
   teachers:Teacher[] = [];
   courses:Course[] = [];
+  edition: CourseEdition = new CourseEdition();
   id:number = 0;
 
-  constructor(private fb:FormBuilder, private courseService: DidactisService, private router:Router, private route:ActivatedRoute) {
+  constructor(private fb:FormBuilder, private editionService: DidactisService, private router:Router, private route:ActivatedRoute) {
     this.editionForm = this.fb.group({   
     });
   }
 
   ngOnInit(): void {
     this.id = Number(this.route.snapshot.paramMap.get('id'));
-    this.editionForm = this.fb.group({
-      code: ['', Validators.required ],
-      description: ['', Validators.required ],
-      startDate: ['', Validators.required ],
-      realPrice: ['', Validators.required ],
-      instructorId: [0, Validators.required ],
-      courseId: [this.id, Validators.required ]
-    });
-    this.courseService.getTeachers()
+    if (this.id == 0) {
+        this.editionForm = this.fb.group({
+            code: ['', Validators.required ],
+            description: ['', Validators.required ],
+            startDate: ['', Validators.required ],
+            realPrice: ['', Validators.required ],
+            instructorId: [0, Validators.required ],
+            courseId: [this.id, Validators.required ]
+          });
+    }else{
+      this.editionService.getEditionById(this.id)
+      .subscribe({
+        next: s => {this.edition = s; 
+            console.log(this.edition.code);
+            this.editionForm = this.fb.group({
+                code: [s.code, Validators.required],
+                description: [this.edition.description, Validators.required],
+                startDate: [this.edition.startDate, Validators.required],
+                realPrice: [this.edition.realPrice, Validators.required],
+                instructorId: [this.edition.instructorId, Validators.required],
+                courseId: [this.id, Validators.required],
+            });
+            console.log(this.edition.code);
+            
+        },
+        error: err => console.log(err)
+      })
+      
+    }
+    this.editionService.getTeachers()
     .subscribe({
       next: t => {this.teachers = t; },
       error: error => console.log(error)
     });
-    this.courseService.getCourses()
+    this.editionService.getCourses()
     .subscribe({
       next: t => {
         this.courses = t;
@@ -48,7 +71,7 @@ export class EditionAddComponent implements OnInit {
   save(){
     this.editionForm.value.docenteId = Number(this.editionForm.value.docenteId)
     this.editionForm.value.corsoId = Number(this.editionForm.value.corsoId)
-    this.courseService.createEdition(this.editionForm.value)
+    this.editionService.createEdition(this.editionForm.value)
         .subscribe({
           next: ce => {
             alert("Edizione creata con id: "+ce.id);
@@ -56,7 +79,6 @@ export class EditionAddComponent implements OnInit {
           },
           error: error=> console.log(error)
         });
-    console.log(this.editionForm.value)
   }
   onBack(): void{
     this.router.navigate(["/coursedetails/"+this.id])
@@ -73,9 +95,6 @@ export class EditionAddComponent implements OnInit {
   checkRequired(name:string):boolean{
     let element = this.editionForm.get(name);
     let required = element?.errors?.required;
-    console.log(name);
-    console.log(element?.errors);
-    console.log(name+' required:'+required);
     return required;
   }
 }
