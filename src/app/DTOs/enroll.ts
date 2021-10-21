@@ -18,6 +18,7 @@ export class Enroll{
         this.studentLastname = student.surname;
         this.courseEditionId = edition.id;
         this.courseEditionCode = edition.code;
+        this.courseEditionStartDate = edition.startDate;
         //this.courseEditionCourseTitle = edition;
     }
 }
