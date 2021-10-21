@@ -25,6 +25,6 @@ import { Student } from 'src/app/DTOs/student';
           });
     }
     onBack(): void{
-      this.router.navigate(["/courses"])
+      this.router.navigate(["/students"])
     } 
   }

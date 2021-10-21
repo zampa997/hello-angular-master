@@ -18,16 +18,18 @@ label{
     margin-top: 50px;
 }
 .btn-info:hover{
+    transform: translateY(-1px);
     -moz-box-shadow: 10px 10px 5px #888;
     -webkit-box-shadow: 10px 10px 5px #888;
     box-shadow: 15px 25px 20px rgb(27, 27, 27);
-    transform: translateY(-3px);
+    
 }
 .btn-warning:hover{
+    transform: translateY(-1px);
     -moz-box-shadow: 10px 10px 5px #888;
     -webkit-box-shadow: 10px 10px 5px #888;
     box-shadow: 15px 25px 20px rgb(27, 27, 27);
-    transform: translateY(-3px);
+   
 }
 .btn-warning{
     width: 600px;

@@ -166,8 +166,8 @@ export class DidactisService {
 
 
   }
-  UnsubscribeStudent(enroll: Enroll): Observable<Enroll> {
-    return this.http.delete<Enroll>(this.enrollUrl)
+  UnsubscribeStudent(id: number): Observable<Enroll> {
+    return this.http.delete<Enroll>(`${this.enrollUrl}/${id}`)
       .pipe(tap(data => console.log(JSON.stringify(data))),
         catchError(this.handleError)
       );
