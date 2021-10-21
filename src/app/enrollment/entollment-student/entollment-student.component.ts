@@ -40,18 +40,25 @@ export class EntollmentStudentComponent implements OnInit {
     });
   }
   ClickOnEnroll(idEdition:number){
-      
-      console.log(idEdition);
-      console.log(this.editionsAllowed);
       var ed = this.editionsAllowed.find(e => e.id == idEdition)
       if(ed != undefined){
           var enroll = new Enroll(this.student, ed);
           this.service.enrollStudent(enroll)
           .subscribe({
-              next: c => enroll = c,
+              next: c => {enroll = c; console.log(enroll); this.ngOnInit()},
               error: error => console.log(error)
           });
-
       }
   }
+  ClickOnUnsubscribe(idEdition:number){
+    var ed = this.editionsAllowed.find(e => e.id == idEdition)
+    if(ed != undefined){
+        var enroll = new Enroll(this.student, ed);
+        this.service.UnsubscribeStudent(enroll)
+        .subscribe({
+            next: c => {enroll = c; console.log(enroll); this.ngOnInit()},
+            error: error => console.log(error)
+        });
+    }
+}
 }

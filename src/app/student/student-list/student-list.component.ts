@@ -1,5 +1,6 @@
 import { Component, OnInit, TestabilityRegistry } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { DidactisService } from 'src/app/courses/didactis.service';
 import { Student } from 'src/app/DTOs/student';
 
@@ -14,6 +15,7 @@ import { Student } from 'src/app/DTOs/student';
 
 export class StudentListComponent implements OnInit{
   students:Student[] = []
+  student:Student = new Student();
   
   constructor(private service:DidactisService, private router:Router, private route:ActivatedRoute) {
   }
@@ -25,6 +27,22 @@ export class StudentListComponent implements OnInit{
           },
           error: error => console.log(error)
         });
+  }
+  delete(id: number) {
+    if(window.confirm("Are you sure to delete "+id)) {
+      console.log(this.remove(id));
+    }
+  }
+  remove(id: number){
+    console.log(id)
+    let obsCourse:Observable<Student> = this.service.deleteStudent(id);
+    obsCourse.subscribe({
+      next: c => {
+        this.student = c;
+        this.ngOnInit();
+      },
+      error: err => console.log(err)
+    });
   }
   
 }

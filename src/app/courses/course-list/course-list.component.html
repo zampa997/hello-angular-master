@@ -20,7 +20,7 @@
           <div class="btn-group" role="group" aria-label="Basic example">
             <button type="button" class="btn btn-primary" [routerLink]="['/coursedetails', c.id]">Info</button>
             <button type="button" class="btn btn-warning" [routerLink]="['/addcourse', c.id]">Modify</button>
-            <button type="button" class="btn btn-danger" (click)="clickMethod(c.id)">Delete</button>
+            <button type="button" class="btn btn-danger" (click)="delete(c.id)">Delete</button>
           </div>
         </td> 
       </tr>

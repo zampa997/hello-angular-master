@@ -6,7 +6,7 @@
             <tr>
                 <th scope="col">id</th>
                 <th scope="col">codice edizione</th>
-                <th scope="col">course title</th>
+                <th scope="col">Titolo del corso</th>
                 <th scope="col"></th>
             </tr>
         </thead>
@@ -16,6 +16,9 @@
                 <td>{{ enroll.courseEditionCode }}</td>
                 <td>{{ enroll.courseEditionCourseTitle }}</td>
                 <td style="text-align: right;">
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-danger" (click)="ClickOnUnsubribed(enroll.id)">Disiscrivi</button>
+                      </div>
                 </td>
             </tr>
         </tbody>
@@ -26,9 +29,9 @@
         style="width: 100%; user-select: none; -moz-user-select: none;">
         <thead>
             <tr>
-                <th scope="col">id</th>
-                <th scope="col">title</th>
-                <th scope="col">description</th>
+                <th scope="col">Id</th>
+                <th scope="col">Titolo</th>
+                <th scope="col">Descrizione</th>
                 <th scope="col"></th>
             </tr>
         </thead>
@@ -39,7 +42,7 @@
                 <td>{{ enroll.startDate }}</td>
                 <td style="text-align: right;">
                     <div class="btn-group" role="group" aria-label="Basic example">
-                      <button type="button" class="btn btn-success" (click)="ClickOnEnroll(enroll.id)">Enroll</button>
+                      <button type="button" class="btn btn-success" (click)="ClickOnEnroll(enroll.id)">Iscrivi</button>
                     </div>
                   </td>
             </tr>

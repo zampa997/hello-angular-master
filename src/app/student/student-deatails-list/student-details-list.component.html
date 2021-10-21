@@ -1,33 +1,95 @@
-<div class="container app2" id="main">
-</div>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col">
+            <div class="input-group myshadow">
+                <span class="input-group-text" id="basic-addon1">ID</span>
+                <input type="text" class="form-control" value="{{ student?.id }}">
+            </div>
+        </div>
+        <div class="col">
+            <div class="input-group myshadow">
+                <span class="input-group-text" id="basic-addon1">Nome</span>
+                <input type="text" class="form-control" value="{{ student?.firstname }}">
+            </div>
+        </div>
+        <div class="col">
+            <div class="input-group myshadow">
+                <span class="input-group-text" id="basic-addon1">Cognome</span>
+                <input type="text" class="form-control" value="{{ student?.surname }}">
+            </div>
+        </div>
+    </div>
 
-<div class="image_card">
-    <img src="\assets\imagines\user.png" alt="STOCAZZO" class="responsive-img" style="width: 200px;">
-</div>  
-<div class="course_card">
-    <a routerLink="/students" class="previous">&laquo;</a>
-    <div class="input-group">
-        <span class="input-group-text" id="basic-addon1">ID</span>
-        <input type="text" class="form-control" aria-label="Username"value={{student?.id}} readonly>
+    <div class="row">
+        <div class="col">
+            <div class="input-group myshadow">
+                <span class="input-group-text" id="basic-addon1">Data di nascita</span>
+                <input type="text" class="form-control" value="{{ student?.dateOfBirth }}">
+            </div>
+        </div>
+        <div class="col">
+            <div class="input-group myshadow">
+                <span class="input-group-text" id="basic-addon1">Indirizzo</span>
+                <input type="text" class="form-control" value="{{ student?.address }}">
+            </div>
+        </div>
+        <div class="col">
+            <div class="input-group myshadow">
+                <span class="input-group-text" id="basic-addon1">Città</span>
+                <input type="text" class="form-control" value="{{ student?.city }}">
+            </div>
+        </div>
     </div>
-    <div class="input-group">
-        <span class="input-group-text" id="basic-addon1">First name</span>
-        <input type="text" class="form-control" aria-label="Username" value={{student?.firstname}} readonly>
+    <div class="row">
+        <div class="col">
+            <div class="input-group myshadow">
+                <span class="input-group-text" id="basic-addon1">Email</span>
+                <input type="text" class="form-control" value="{{ student?.email }}">
+
+            </div>
+        </div>
+        <div class="col">
+            <div class="input-group myshadow">
+                <span class="input-group-text" id="basic-addon1">Numero di telefono</span>
+                <input type="text" class="form-control" value="{{ student?.phoneNumber }}">
+
+            </div>
+        </div>
+        <div class="col">
+            <div class="input-group myshadow">
+                <span class="input-group-text" id="basic-addon1">Impiegato</span>
+                <input type="text" class="form-control" value="{{ student?.isEmployee }}">
+            </div>
+        </div>
     </div>
-    <div class="input-group">
-        <span class="input-group-text" id="basic-addon1">Last name</span>
-        <input type="text" class="form-control" aria-label="Username" value={{student?.surname}} readonly>
+    <div class="row">
+        <div class="col">
+            <button class="btn btn-warning" (click)="onBack()">Indietro</button>
+        </div>
     </div>
-    <div class="input-group">
-        <span class="input-group-text" id="basic-addon1">email</span>
-        <input type="text" class="form-control" aria-label="Username" value={{student?.email}} readonly>
-    </div>
-    <div class="input-group">
-        <span class="input-group-text" id="basic-addon1">phone</span>
-        <input type="text" class="form-control" aria-label="Username" value={{student?.phoneNumber}} readonly>
-    </div>
-    <div class="input-group">
-        <span class="input-group-text" id="basic-addon1">Birth date</span>
-        <input type="check" class="form-control" aria-label="Username" value={{student?.dateOfBirth}} readonly>
-    </div>
-</div> 
+
+
+
+    <!--<table class="table table-dark table-striped table-hover"
+        style="width: 90%; user-select: none; -moz-user-select: none;">
+        <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">code</th>
+                <th scope="col">description</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let e of editions">
+                <td>{{ e.id }}</td>
+                <td>{{ e.code }}</td>
+                <td>{{ e.description }}</td>
+                <td style="text-align: right;">
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>-->
+</div>

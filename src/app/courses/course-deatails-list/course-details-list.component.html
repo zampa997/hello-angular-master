@@ -1,20 +1,19 @@
 <div class="container mt-5">
-    <a (click)="onBack()" class="previous">&laquo;</a>
     <div class="row">
         <div class="col">
-            <div class="input-group">
+            <div class="input-group myshadow">
                 <span class="input-group-text" id="basic-addon1">ID</span>
                 <input type="text" class="form-control" value="{{ course?.id }}">
             </div>
         </div>
         <div class="col">
-            <div class="input-group">
+            <div class="input-group myshadow">
                 <span class="input-group-text" id="basic-addon1">Title</span>
                 <input type="text" class="form-control" value="{{ course?.title }}">
             </div>
         </div>
         <div class="col">
-            <div class="input-group">
+            <div class="input-group myshadow">
                 <span class="input-group-text" id="basic-addon1">Description</span>
                 <input type="text" class="form-control" value="{{ course?.description }}">
             </div>
@@ -23,19 +22,19 @@
 
     <div class="row">
         <div class="col">
-            <div class="input-group">
+            <div class="input-group myshadow">
                 <span class="input-group-text" id="basic-addon1">Duration</span>
                 <input type="text" class="form-control" value="{{ course?.duration }}">
             </div>
         </div>
         <div class="col">
-            <div class="input-group">
+            <div class="input-group myshadow">
                 <span class="input-group-text" id="basic-addon1">Base price</span>
                 <input type="text" class="form-control" value="{{ course?.basePrice }}">
             </div>
         </div>
         <div class="col">
-            <div class="input-group">
+            <div class="input-group myshadow">
                 <span class="input-group-text" id="basic-addon1">Syllabus</span>
                 <input type="text" class="form-control" value="{{ course?.syllabus }}">
             </div>
@@ -44,21 +43,21 @@
 
     <div class="row">
         <div class="col">
-            <div class="input-group">
+            <div class="input-group myshadow">
                 <span class="input-group-text" id="basic-addon1">Level</span>
                 <input type="text" class="form-control" value="{{ course?.level }}">
 
             </div>
         </div>
         <div class="col">
-            <div class="input-group">
+            <div class="input-group myshadow">
                 <span class="input-group-text" id="basic-addon1">Area ID</span>
                 <input type="text" class="form-control" value="{{ course?.areaId }}">
 
             </div>
         </div>
         <div class="col">
-            <div class="input-group">
+            <div class="input-group myshadow">
                 <span class="input-group-text" id="basic-addon1">Area name</span>
                 <input type="text" class="form-control" value="{{ course?.areaName }}">
 
@@ -67,23 +66,28 @@
     </div>
     <div class="row">
         <div class="col">
-            <div class="input-group">
+            <div class="input-group myshadow">
                 <span class="input-group-text" id="basic-addon1">Creation Date</span>
                 <input type="text" class="form-control" value="{{ course?.creationDate }}">
             </div>
         </div>
         <div class="col">
-            <div class="input-group">
+            <div class="input-group myshadow">
                 <span class="input-group-text" id="basic-addon1">Grants certifications</span>
                 <input type="text" class="form-control" value="{{ course?.grantsCertification }}">
             </div>
         </div>
         <div class="col">
-            <div class="input-group">
+            <div class="input-group myshadow">
                 <span class="input-group-text" id="basic-addon1">Editions:</span>
                 <button class="btn btn-info" id="view">View</button>
                 <button class="btn btn-primary" [routerLink]="['/addedition', 0]">Add</button>
             </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <button class="btn btn-warning" (click)="onBack()">Indietro</button>
         </div>
     </div>
 

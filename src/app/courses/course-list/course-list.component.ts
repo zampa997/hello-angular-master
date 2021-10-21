@@ -31,7 +31,7 @@ export class CourseListComponent implements OnInit {
       error: err => console.log(err)
     });
   }
-  clickMethod(id: number) {
+  delete(id: number) {
     if(window.confirm("Are you sure to delete "+id)) {
       console.log(this.remove(id));
     }

@@ -24,4 +24,7 @@ import { Student } from 'src/app/DTOs/student';
             error: error => console.log(error)
           });
     }
+    onBack(): void{
+      this.router.navigate(["/courses"])
+    } 
   }
