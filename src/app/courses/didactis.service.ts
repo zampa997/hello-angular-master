@@ -121,6 +121,24 @@ getAvailableEnrollmentByStudentId(id:number):Observable<Enroll[]>{
             );
 }
 
+createStudent(student:Student):Observable<Student>{
+  const hs = new HttpHeaders({
+    "Content-Type": "application/json"
+  });
+  return this.http.post<Student>(this.studentUrl, student, { headers : hs })
+                  .pipe( tap(data => console.log(JSON.stringify(data))),
+                  catchError(this.handleError));
+}
+
+updateStudent(student:Student):Observable<Student>{
+  const hs = new HttpHeaders({
+    "Content-Type": "application/json"
+  });
+  return this.http.put<Student>(this.studentUrl, student, { headers : hs })
+                  .pipe( tap(data => console.log(JSON.stringify(data))),
+                  catchError(this.handleError));
+}
+
   private handleError(errorResponse:HttpErrorResponse) : Observable<never>{ //lancia un'eccezione
     let errorMessage = '';
     if (errorResponse.error instanceof ErrorEvent) {
