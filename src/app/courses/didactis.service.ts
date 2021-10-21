@@ -116,6 +116,16 @@ export class DidactisService {
       );
   }
 
+  updateEdition(edition: CourseEdition): Observable<CourseEdition> {
+    const hs = new HttpHeaders({
+      "Content-Type": "application/json"
+    });
+    return this.http.put<CourseEdition>(this.courseEditionUrl, edition, { headers: hs })
+      .pipe(tap(data => console.log(JSON.stringify(data))),
+        catchError(this.handleError)
+      );
+  }
+
   getSubscribedEnrollmentByStudentId(id: number): Observable<Enroll[]> {
     return this.http.get<Enroll[]>(`${this.enrollUrl}/studentSubscribed/${id}`)
       .pipe(tap(data => console.log(JSON.stringify(data))),

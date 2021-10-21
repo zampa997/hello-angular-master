@@ -41,15 +41,14 @@ export class EditionAddComponent implements OnInit {
         next: s => {this.edition = s; 
             console.log(this.edition.code);
             this.editionForm = this.fb.group({
-                code: [s.code, Validators.required],
+                code: [this.edition.code, Validators.required],
                 description: [this.edition.description, Validators.required],
                 startDate: [this.edition.startDate, Validators.required],
                 realPrice: [this.edition.realPrice, Validators.required],
                 instructorId: [this.edition.instructorId, Validators.required],
                 courseId: [this.id, Validators.required],
             });
-            console.log(this.edition.code);
-            
+            console.log(this.edition.code);  
         },
         error: err => console.log(err)
       })
@@ -71,14 +70,26 @@ export class EditionAddComponent implements OnInit {
   save(){
     this.editionForm.value.docenteId = Number(this.editionForm.value.docenteId)
     this.editionForm.value.corsoId = Number(this.editionForm.value.corsoId)
-    this.editionService.createEdition(this.editionForm.value)
+    if (this.id == 0) {
+        this.editionService.createEdition(this.editionForm.value)
         .subscribe({
           next: ce => {
             alert("Edizione creata con id: "+ce.id);
-            this.router.navigate([`"/coursedetails/${this.editionForm.value.corsoId}"`]);
+            this.router.navigate([`"/editions/${this.editionForm.value.corsoId}"`]);
           },
           error: error=> console.log(error)
         });
+    } else {
+        this.editionService.updateEdition(this.editionForm.value)
+        .subscribe({
+          next: ce => {
+            alert("Edizione aggiornata con id: "+ce.id);
+            this.router.navigate([`"/editions/${this.editionForm.value.corsoId}"`]);
+          },
+          error: error=> console.log(error)
+        });
+    }
+    
   }
   onBack(): void{
     this.router.navigate(["/coursedetails/"+this.id])

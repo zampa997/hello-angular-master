@@ -31,7 +31,7 @@ const routes: Routes = [
 
   {path: 'addedition/:id', component: EditionAddComponent, data: { animationState: 'ThreeDetailsAddEdition' }},
 
-  { path: 'editions/:id', component: EditionListComponent, data: { animationState: 'For' } },
+  { path: 'editions/:id', component: EditionListComponent, data: { animationState: 'Four' } },
 
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 
