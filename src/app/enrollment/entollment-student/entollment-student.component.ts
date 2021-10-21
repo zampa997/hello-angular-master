@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DidactisService } from 'src/app/courses/didactis.service';
+import { CourseEdition } from 'src/app/DTOs/edition';
 import { Enroll } from 'src/app/DTOs/enroll';
 import { Student } from 'src/app/DTOs/student';
 
@@ -11,9 +12,11 @@ import { Student } from 'src/app/DTOs/student';
 })
 export class EntollmentStudentComponent implements OnInit {
   editionsSubsribed:Enroll[] = [];
-  student:Student | undefined;
+  editionsAllowed:CourseEdition[] = [];
+  student:Student;
 
   constructor(private service: DidactisService, private router:Router, private route:ActivatedRoute){
+      this.student = new Student();
   }
 
   ngOnInit(): void {
@@ -25,15 +28,23 @@ export class EntollmentStudentComponent implements OnInit {
     });
 
     this.service.getSubscribedEnrollmentByStudentId(id)
-        .subscribe({
+    .subscribe({
           next: c => {this.editionsSubsribed = c},
           error: error => console.log(error)
         });
+    
     this.service.getAvailableEnrollmentByStudentId(id)
     .subscribe({
-        next: c => {this.editionsSubsribed = c},
+        next: c => {this.editionsAllowed = c},
         error: error => console.log(error)
     });
-
+  }
+  ClickOnEnroll(idEdition:number){
+    var enroll = new Enroll(this.student, this.editionsAllowed[idEdition])
+    this.service.enrollStudent(enroll)
+    .subscribe({
+        next: c => enroll = c,
+        error: error => console.log(error)
+    });;
   }
 }

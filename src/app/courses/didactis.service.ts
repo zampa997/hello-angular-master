@@ -114,9 +114,9 @@ getSubscribedEnrollmentByStudentId(id:number):Observable<Enroll[]>{
               );
 }
 
-getAvailableEnrollmentByStudentId(id:number):Observable<Enroll[]>{
-    return this.http.get<Enroll[]>(`${this.enrollUrl}/studentAvailable/${id}`)
-            .pipe( tap(data => console.log(JSON.stringify(data))),
+getAvailableEnrollmentByStudentId(id:number):Observable<CourseEdition[]>{
+    return this.http.get<CourseEdition[]>(`${this.enrollUrl}/studentAvailable/${id}`)
+            .pipe( tap(data => console.log(data)),
             catchError(this.handleError)
             );
 }
@@ -130,6 +130,16 @@ getAvailableEnrollmentByStudentId(id:number):Observable<Enroll[]>{
     }
     console.log(errorMessage);
     return throwError(errorMessage);
+  }
+  enrollStudent(enroll: Enroll): Observable<Enroll>{
+    const hs = new HttpHeaders({
+        "Content-Type": "application/json"
+      });
+      return this.http.post<Enroll>(this.enrollUrl, enroll, { headers: hs })
+                      .pipe( tap(data => console.log(JSON.stringify(data))),
+                      catchError(this.handleError)
+      );
+  
   }
 }
 
