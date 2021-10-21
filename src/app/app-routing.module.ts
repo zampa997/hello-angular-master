@@ -8,6 +8,7 @@ import { EntollmentStudentComponent } from './enrollment/entollment-student/ento
 import { HomeComponent } from './home/home.component';
 import { StudentDetailsListComponent } from './student/student-deatails-list/student-details-list.component';
 import { StudentListComponent } from './student/student-list/student-list.component';
+import { StudentAddComponent } from './student/student-add/student-add.component';
 
 const routes: Routes = [
 
@@ -20,6 +21,8 @@ const routes: Routes = [
   { path: 'enrollmentstudent/:id', component: EntollmentStudentComponent, data: { animationState: 'EnrollStudent' } },
 
   { path: 'addcourse/:id', component: CourseAddComponent, data: { animationState: 'Add' } },
+
+  { path: 'addstudent/:id', component: StudentAddComponent, data: { animationState: 'Add' } },
   
   {path: 'coursedetails/:id', component: CourseDetailsListComponent, data: { animationState: 'ThreeDetails' }},
 

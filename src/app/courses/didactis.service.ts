@@ -113,6 +113,7 @@ getSubscribedEnrollmentByStudentId(id:number):Observable<Enroll[]>{
               catchError(this.handleError)
               );
 }
+
 getAvailableEnrollmentByStudentId(id:number):Observable<Enroll[]>{
     return this.http.get<Enroll[]>(`${this.enrollUrl}/studentAvailable/${id}`)
             .pipe( tap(data => console.log(JSON.stringify(data))),

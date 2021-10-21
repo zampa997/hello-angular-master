@@ -18,16 +18,22 @@ export class EntollmentStudentComponent implements OnInit {
 
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
+    this.service.getStudentById(id)
+    .subscribe({
+        next: c => {this.student = c},
+        error: error => console.log(error)
+    });
+
     this.service.getSubscribedEnrollmentByStudentId(id)
         .subscribe({
           next: c => {this.editionsSubsribed = c},
           error: error => console.log(error)
         });
-    this.service.getStudentById(id)
-        .subscribe({
-          next: c => {this.student = c},
-          error: error => console.log(error)
-        });
-  }
+    this.service.getAvailableEnrollmentByStudentId(id)
+    .subscribe({
+        next: c => {this.editionsSubsribed = c},
+        error: error => console.log(error)
+    });
 
+  }
 }
