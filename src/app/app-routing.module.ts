@@ -11,6 +11,7 @@ import { StudentDetailsListComponent } from './student/student-deatails-list/stu
 import { StudentListComponent } from './student/student-list/student-list.component';
 import { StudentAddComponent } from './student/student-add/student-add.component';
 import { EditionDetailsListComponent } from './edition/edition-details-list/edition-details-list.component';
+import { EnrollmentEditionComponent } from './enrollment/enrollment-edition/enrollment-edition.component';
 
 const routes: Routes = [
 
@@ -29,6 +30,8 @@ const routes: Routes = [
   {path: 'coursedetails/:id', component: CourseDetailsListComponent, data: { animationState: 'ThreeDetails' }},
 
   {path: 'studentdetails/:id', component: StudentDetailsListComponent, data: { animationState: 'TwoDetails' }},
+
+  {path: 'enrolledition/:id', component: EnrollmentEditionComponent, data: { animationState: 'EnrollEdition' }},
 
   {path: 'addedition/:id/:idcorso', component: EditionAddComponent, data: { animationState: 'ThreeDetailsAddEdition' }},
 

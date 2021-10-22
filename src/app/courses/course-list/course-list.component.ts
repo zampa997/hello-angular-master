@@ -10,7 +10,7 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { faBook } from '@fortawesome/free-solid-svg-icons';
 
 
-
+declare var bootbox:any;
 @Component({
   selector: 'app-course-list',
   templateUrl: './course-list.component.html',
@@ -48,9 +48,25 @@ export class CourseListComponent implements OnInit {
     });
   }
   delete(id: number) {
-    if(window.confirm("Sei sicuro di voler eliminare questo corso?")) {
-      console.log(this.remove(id));
-    }
+    bootbox.dialog({
+      title:"Elimina studente",
+      message: "Sei sicuro di voler eliminare questo studente?",
+      closeButton: false,
+      size:'large',
+      buttons: {
+          cancel: {
+              label: 'Elimina',
+              className: 'btn-danger',
+              callback:  () => {
+               this.remove(id);
+            },
+          },
+          confirm: {
+            label: 'Annulla',
+            className: 'btn-warning'
+        },
+      },
+    });
   }
   search(name:string){
 

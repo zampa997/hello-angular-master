@@ -10,7 +10,7 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { faGraduationCap } from '@fortawesome/free-solid-svg-icons';
 
-
+declare var bootbox : any;
 
 @Component({
   selector: 'app-root',
@@ -54,16 +54,31 @@ export class StudentListComponent implements OnInit{
   }
 
   delete(id: number) {
-    if(window.confirm("Are you sure to delete "+id)) {
+    /*if(window.confirm("Are you sure to delete "+id)) {
       console.log(this.remove(id));
-    }
-    /*bootbox.confirm("This is the default confirm!", function(){ 
-      console.log('This was logged in the callback: '); 
-    });*/
+    }*/
+    bootbox.dialog({
+      title:"Elimina studente",
+      message: "Sei sicuro di voler eliminare questo studente?",
+      closeButton: false,
+      size:'large',
+      buttons: {
+          cancel: {
+              label: 'Elimina',
+              className: 'btn-danger',
+              callback:  () => {
+               this.remove(id);
+            },
+          },
+          confirm: {
+            label: 'Annulla',
+            className: 'btn-warning'
+        },
+      },
+    });
   }
   
   remove(id: number){
-
     let obsCourse:Observable<Student> = this.service.deleteStudent(id);
     obsCourse.subscribe({
       next: c => {

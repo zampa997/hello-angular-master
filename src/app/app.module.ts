@@ -16,7 +16,8 @@ import { EntollmentStudentComponent } from './enrollment/entollment-student/ento
 import { StudentAddComponent } from './student/student-add/student-add.component';
 import { EditionListComponent } from './edition/edition-list/edition-list.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { EditionDetailsListComponent } from './edition/edition-details-list/edition-details-list.component'
+import { EditionDetailsListComponent } from './edition/edition-details-list/edition-details-list.component';
+import { EnrollmentEditionComponent } from './enrollment/enrollment-edition/enrollment-edition.component'
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { EditionDetailsListComponent } from './edition/edition-details-list/edit
     StudentAddComponent,
     EditionListComponent,
     EditionDetailsListComponent,
+    EnrollmentEditionComponent,
   ],
   imports: [
     BrowserModule,

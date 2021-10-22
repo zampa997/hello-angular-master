@@ -7,4 +7,5 @@ export class CourseEdition{
     finalizationDate: string ="";
     instructorId: number = 0;
     courseId:number =0;
+    courseTitle:string="";
 }

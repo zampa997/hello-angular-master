@@ -20,6 +20,6 @@ export class Enroll{
         this.courseEditionId = edition.id;
         this.courseEditionCode = edition.code;
         this.courseEditionStartDate = edition.startDate;
-        //this.courseEditionCourseTitle = edition;
+        this.courseEditionCourseTitle = edition.courseTitle;
     }
 }

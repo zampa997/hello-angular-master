@@ -32,12 +32,7 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": [
-              "node_modules/jQuery/lib/node-jquery.js",
-              "node_modules/popper.js/dist/popper.js",
-              "node_modules/bootstrap/dist/js/bootstrap.js",
-              "node_modules/bootbox/bootbox.js"             
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {

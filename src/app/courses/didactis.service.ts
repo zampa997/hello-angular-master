@@ -138,9 +138,21 @@ export class DidactisService {
         catchError(this.handleError)
       );
   }
+  getSubscribedEnrollmentByCourseEditionId(id: number): Observable<Enroll[]> {
+    return this.http.get<Enroll[]>(`${this.enrollUrl}/courseeditionSubscribed/${id}`)
+      .pipe(tap(data => console.log(data)),
+        catchError(this.handleError)
+      );
+  }
 
   getAvailableEnrollmentByStudentId(id: number): Observable<CourseEdition[]> {
     return this.http.get<CourseEdition[]>(`${this.enrollUrl}/studentAvailable/${id}`)
+      .pipe(tap(data => console.log(data)),
+        catchError(this.handleError)
+      );
+  }
+  getAvailableEnrollmentByCourseEditionId(id: number): Observable<Student[]> {
+    return this.http.get<Student[]>(`${this.enrollUrl}/courseeditionAvailable/${id}`)
       .pipe(tap(data => console.log(data)),
         catchError(this.handleError)
       );

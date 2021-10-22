@@ -9,6 +9,7 @@ import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
+declare var bootbox:any;
 @Component({
   selector: 'app-edition-list',
   templateUrl: './edition-list.component.html',
@@ -27,6 +28,7 @@ export class EditionListComponent implements OnInit {
     faedit = faEdit;
     faelimina = faTrash;
     fasearch = faSearch;
+    fadelete = faTrash;
 
     constructor(private service:DidactisService, private router:Router, private route:ActivatedRoute) {
 
@@ -45,16 +47,39 @@ export class EditionListComponent implements OnInit {
       },
       error: err => console.log(err)
     });
+    let obsCourse:Observable<CourseEdition> = this.service.getEditionById(this.id);
+    obsCourse.subscribe({
+      next: cs => {
+        this.edition = cs;   
+      },
+      error: err => console.log(err)
+    });
   }
-
+  
   search(name:string){
     this.editions = this.originalEditions;
     this.editions = this.editions.filter(c => c.code.includes(name))
   }
   delete(id: number) {
-    if(window.confirm("Sei sicuro di voler eliminare questo corso?")) {
-      console.log(this.remove(id));
-    }
+    bootbox.dialog({
+      title:"Elimina studente",
+      message: "Sei sicuro di voler eliminare questo studente?",
+      closeButton: false,
+      size:'large',
+      buttons: {
+          cancel: {
+              label: 'Elimina',
+              className: 'btn-danger',
+              callback:  () => {
+               this.remove(id);
+            },
+          },
+          confirm: {
+            label: 'Annulla',
+            className: 'btn-warning'
+        },
+      },
+    });
   }
   remove(id: number){
       console.log(id)

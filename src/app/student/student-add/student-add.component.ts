@@ -43,7 +43,7 @@ export class StudentAddComponent implements OnInit {
           next: s => {
             this.student = s;
             alert("studente creato con id: "+this.student?.id);
-            this.router.navigate(["/courses"])
+            this.onBack();
           },
           error: err => console.log(err)
         });
@@ -55,7 +55,7 @@ export class StudentAddComponent implements OnInit {
           next: s => {
             this.student = this.student;
             alert("studente aggiornato con id: "+this.student?.id);
-            this.router.navigate(["/courses"])
+            this.onBack();
           },
           error: err => console.log(err)
         });

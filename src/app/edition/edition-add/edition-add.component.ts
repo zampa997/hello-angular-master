@@ -93,7 +93,7 @@ export class EditionAddComponent implements OnInit {
         .subscribe({
           next: ce => {
             alert("Edizione creata con id: "+ce.id);
-            this.router.navigate([`"/editions/${this.editionForm.value.courseId}"`]);
+            this.onBack();
           },
           error: error=> console.log(error)
         });
