@@ -3,6 +3,8 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DidactisService } from 'src/app/courses/didactis.service';
 import { Student } from 'src/app/DTOs/student';
+import { faReply } from '@fortawesome/free-solid-svg-icons';
+import { faSave } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-student-add',
@@ -13,6 +15,9 @@ export class StudentAddComponent implements OnInit {
 
   student:Student;
   id:number = 0; 
+
+  faundo = faReply;
+  fasend=faSave;
 
   constructor(private service:DidactisService, private router:Router, private route:ActivatedRoute) {
     this.student = new Student();
@@ -57,7 +62,7 @@ export class StudentAddComponent implements OnInit {
       }
   }
   onBack(): void{
-    this.router.navigate(["/courses"])
+    this.router.navigate(["/students"])
   }
 
 }

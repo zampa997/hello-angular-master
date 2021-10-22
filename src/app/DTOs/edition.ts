@@ -4,5 +4,7 @@ export class CourseEdition{
     description:string = "";
     realPrice: number = 0;
     startDate: string = "";
+    finalizationDate: string ="";
     instructorId: number = 0;
+    courseId:number =0;
 }

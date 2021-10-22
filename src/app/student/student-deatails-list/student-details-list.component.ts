@@ -3,6 +3,7 @@ import { EmailValidator } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DidactisService } from 'src/app/courses/didactis.service';
 import { Student } from 'src/app/DTOs/student';
+import { faReply } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
     selector: 'app-student-details-list',
@@ -12,6 +13,7 @@ import { Student } from 'src/app/DTOs/student';
   export class StudentDetailsListComponent implements OnInit{
 
     student:Student | undefined
+    fareply = faReply;
 
     constructor(private service: DidactisService, private router:Router, private route:ActivatedRoute){
     }

@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<div class="container">
     <form novalidate (ngSubmit)="save(addCourseForm)" #addCourseForm="ngForm">
         <label for="title" class="form-label">Titolo</label>
         <input type="text" class="form-control myshadow" id="title" name="title" required minlength="5" [(ngModel)]="course.title"
@@ -57,8 +57,8 @@
         </div>
         
         <div class="btn-group" role="group" aria-label="Basic example">
-            <input type="submit" class="btn btn-info"value="invia" [title]="addCourseForm.valid ? 'crea nuovo corso' : 'invio disabilitato finchè i dati non sono validi'" [disabled]="!addCourseForm.valid">
-            <button (click)="onBack()" class="btn btn-warning">Back</button>
+            <button class="btn btn-info"value="invia" [title]="addCourseForm.valid ? 'crea nuovo corso' : 'invio disabilitato finchè i dati non sono validi'" [disabled]="!addCourseForm.valid"><fa-icon [icon]="fasend"></fa-icon>&nbsp;&nbsp;Salva</button>
+            <button (click)="onBack()" class="btn btn-warning"><fa-icon [icon]="faundo"></fa-icon>&nbsp;&nbsp;Indietro</button>
         </div>
     </form>
 </div>

@@ -1,13 +1,19 @@
 <div class="container app" id="main">
     <button class="btn btn-primary mt-3 mb-3" [routerLink]="['/addcourse', 0]" style="width: 200px;">Crea corso</button>
+    <div class="input-group search">
+    
+        <span class="input-group-text" for="search"><fa-icon [icon]="fasearch"></fa-icon>&nbsp;Cerca</span>
+    
+        <input [(ngModel)]="myValue" value="{{myValue}}" (keyup)="search(myValue)" class="form-control" name="search" placeholder="ricerca per codice edizione">
+      </div> 
     <div class="myborder"></div>
         <table class="table table-dark table-striped table-hover"
-        style="width: 90%; user-select: none; -moz-user-select: none;">
+        style="width: 100%; user-select: none; -moz-user-select: none;">
         <thead>
             <tr>
-                <th scope="col">id</th>
-                <th scope="col">code</th>
-                <th scope="col">description</th>
+                <th scope="col">Id</th>
+                <th scope="col">Codice edizione</th>
+                <th scope="col">Descrizione</th>
                 <th scope="col"></th>
             </tr>
         </thead>
@@ -18,9 +24,9 @@
                 <td>{{ e.description }}</td>
                 <td style="text-align: right;">
                     <div class="btn-group" role="group" aria-label="Basic example">
-                        <button class="btn btn-warning" [routerLink]="['/addedition', e?.id]">modify</button>
-                        <button type="button" class="btn btn-primary" [routerLink]="['/studentdetails', e.id]">Info</button>
-                        <button type="button" class="btn btn-success" [routerLink]="['/enrollmentstudent', e.id]">Enroll</button>
+                        <button class="btn btn-warning" [routerLink]="['/addedition', e?.id]"><fa-icon [icon]="faedit"></fa-icon>&nbsp;&nbsp;Modifica</button>
+                        <button type="button" class="btn btn-primary" ><fa-icon [icon]="fainfo"></fa-icon>&nbsp;&nbsp;Dettagli</button> <!--[routerLink]="['/editiondetails', e.id]"-->
+                        <button type="button" class="btn btn-success" ><fa-icon [icon]="faiscrivi"></fa-icon>&nbsp;&nbsp;Iscrivi</button><!--[routerLink]="['/enrolledition', e.id]"-->
                         <!-- <button type="button" class="btn btn-danger" (click)="delete(e.id)">Delete</button> -->
                     </div>
                 </td>

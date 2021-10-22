@@ -6,6 +6,8 @@ import { Area } from 'src/app/DTOs/area';
 import { Course } from 'src/app/DTOs/course';
 import { Level } from 'src/app/DTOs/level';
 import { DidactisService } from '../didactis.service';
+import { faReply } from '@fortawesome/free-solid-svg-icons';
+import { faSave } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-course-add',
@@ -18,6 +20,9 @@ export class CourseAddComponent implements OnInit {
   areas:Area[] = [];
   levels: {value : number, label:string}[];
   id:number = 0; 
+
+  faundo = faReply;
+  fasend=faSave;
 
   constructor(private service:DidactisService, private router:Router, private route:ActivatedRoute) { 
     this.levels = this.getLevels();

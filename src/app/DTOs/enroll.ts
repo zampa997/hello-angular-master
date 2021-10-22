@@ -12,6 +12,7 @@ export class Enroll{
     studentEvaluation:string = "";
     studentFeedBack:string = "";
     courseEditionStartDate:string = "";
+    
     constructor(student: Student, edition: CourseEdition){
         this.studentId = student.id;
         this.studentFirstname = student.firstname;

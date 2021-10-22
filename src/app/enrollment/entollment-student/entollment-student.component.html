@@ -17,7 +17,7 @@
                 <td>{{ enroll.courseEditionCourseTitle }}</td>
                 <td style="text-align: right;">
                     <div class="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-danger" (click)="ClickOnUnsubscribe(enroll.id)">Disiscrivi</button>
+                        <button type="button" class="btn btn-danger" (click)="ClickOnUnsubscribe(enroll.id)"><fa-icon [icon]="fadisiscrivi"></fa-icon>&nbsp;&nbsp;Disiscrivi</button>
                       </div>
                 </td>
             </tr>
@@ -42,10 +42,11 @@
                 <td>{{ enroll.startDate }}</td>
                 <td style="text-align: right;">
                     <div class="btn-group" role="group" aria-label="Basic example">
-                      <button type="button" class="btn btn-success" (click)="ClickOnEnroll(enroll.id)">Iscrivi</button>
+                      <button type="button" class="btn btn-success" (click)="ClickOnEnroll(enroll.id)"><fa-icon [icon]="faiscrivi"></fa-icon>&nbsp;&nbsp;Iscrivi</button>
                     </div>
                   </td>
             </tr>
         </tbody>
     </table>
+    <button (click)="onBack()" class="btn btn-warning"><fa-icon [icon]="faundo"></fa-icon>&nbsp;&nbsp;Indietro</button>
 </div>

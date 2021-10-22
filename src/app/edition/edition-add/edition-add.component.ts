@@ -5,6 +5,10 @@ import { DidactisService } from 'src/app/courses/didactis.service';
 import { Course } from 'src/app/DTOs/course';
 import { CourseEdition } from 'src/app/DTOs/edition';
 import { Teacher } from 'src/app/DTOs/teacher';
+import { faReply } from '@fortawesome/free-solid-svg-icons';
+import { faSave } from '@fortawesome/free-solid-svg-icons';
+
+
 
 @Component({
   selector: 'app-edition-add',
@@ -19,6 +23,9 @@ export class EditionAddComponent implements OnInit {
   edition: CourseEdition = new CourseEdition();
   id:number = 0;
 
+  faundo = faReply;
+  fasave = faSave;
+
   constructor(private fb:FormBuilder, private editionService: DidactisService, private router:Router, private route:ActivatedRoute) {
     this.editionForm = this.fb.group({   
     });
@@ -31,6 +38,7 @@ export class EditionAddComponent implements OnInit {
             code: ['', Validators.required ],
             description: ['', Validators.required ],
             startDate: ['', Validators.required ],
+            finalizationDate: ['', Validators.required ],
             realPrice: ['', Validators.required ],
             instructorId: [0, Validators.required ],
             courseId: [this.id, Validators.required ]
@@ -38,17 +46,19 @@ export class EditionAddComponent implements OnInit {
     }else{
       this.editionService.getEditionById(this.id)
       .subscribe({
-        next: s => {this.edition = s; 
+        next: s => {this.edition = s;
             console.log(this.edition.code);
             this.editionForm = this.fb.group({
+                id: this.edition.id,
                 code: [this.edition.code, Validators.required],
                 description: [this.edition.description, Validators.required],
                 startDate: [this.edition.startDate, Validators.required],
+                finalizationDate: [this.edition.startDate, Validators.required],
                 realPrice: [this.edition.realPrice, Validators.required],
                 instructorId: [this.edition.instructorId, Validators.required],
-                courseId: [this.id, Validators.required],
+                courseId: [this.edition.courseId, Validators.required],
             });
-            console.log(this.edition.code);  
+            console.log(this.edition.id);  
         },
         error: err => console.log(err)
       })
@@ -68,14 +78,14 @@ export class EditionAddComponent implements OnInit {
     });
   }
   save(){
-    this.editionForm.value.docenteId = Number(this.editionForm.value.docenteId)
-    this.editionForm.value.corsoId = Number(this.editionForm.value.corsoId)
+    this.editionForm.value.instructorId = Number(this.editionForm.value.instructorId)
+    this.editionForm.value.courseId = Number(this.editionForm.value.courseId)
     if (this.id == 0) {
         this.editionService.createEdition(this.editionForm.value)
         .subscribe({
           next: ce => {
             alert("Edizione creata con id: "+ce.id);
-            this.router.navigate([`"/editions/${this.editionForm.value.corsoId}"`]);
+            this.router.navigate([`"/editions/${this.editionForm.value.courseId}"`]);
           },
           error: error=> console.log(error)
         });
@@ -84,10 +94,11 @@ export class EditionAddComponent implements OnInit {
         .subscribe({
           next: ce => {
             alert("Edizione aggiornata con id: "+ce.id);
-            this.router.navigate([`"/editions/${this.editionForm.value.corsoId}"`]);
+            this.router.navigate([`"/editions/${this.editionForm.value.courseId}"`]);
           },
           error: error=> console.log(error)
         });
+        console.log(this.editionForm.value)
     }
     
   }

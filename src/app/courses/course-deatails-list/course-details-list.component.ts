@@ -4,6 +4,9 @@ import { Course } from 'src/app/DTOs/course';
 import { CourseEdition } from 'src/app/DTOs/edition';
 import { Level } from 'src/app/DTOs/level';
 import { DidactisService } from '../didactis.service';
+import { faReply } from '@fortawesome/free-solid-svg-icons';
+import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import { faList } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
     selector: 'app-course-details-list',
@@ -14,6 +17,10 @@ import { DidactisService } from '../didactis.service';
 
     course:Course | undefined;
     editions:CourseEdition[] = [];
+
+    faundo = faReply;
+    faplus = faPlusCircle;
+    faview = faList;
 
     constructor(private courseService: DidactisService, private router:Router, private route:ActivatedRoute){
     }

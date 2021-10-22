@@ -4,6 +4,9 @@ import { DidactisService } from 'src/app/courses/didactis.service';
 import { CourseEdition } from 'src/app/DTOs/edition';
 import { Enroll } from 'src/app/DTOs/enroll';
 import { Student } from 'src/app/DTOs/student';
+import { faGraduationCap } from '@fortawesome/free-solid-svg-icons';
+import { faHandshakeSlash } from '@fortawesome/free-solid-svg-icons';
+import { faReply } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-entollment-student',
@@ -11,9 +14,14 @@ import { Student } from 'src/app/DTOs/student';
   styleUrls: ['./entollment-student.component.css']
 })
 export class EntollmentStudentComponent implements OnInit {
+
   editionsSubsribed: Enroll[] = [];
   editionsAllowed: CourseEdition[] = [];
   student: Student;
+
+  faiscrivi = faGraduationCap;
+  fadisiscrivi = faHandshakeSlash;
+  faundo = faReply;
 
   constructor(private service: DidactisService, private router: Router, private route: ActivatedRoute) {
     this.student = new Student();
@@ -51,7 +59,7 @@ export class EntollmentStudentComponent implements OnInit {
     }
   }
   ClickOnUnsubscribe(idEdition: number) {
-    if(window.confirm("Are you sure to delete "+idEdition)) {
+    if(window.confirm("Sei sicuro di voler disiscrivere da quest'edizione? ")) {
       console.log(this.remove(idEdition));
     }
   }
@@ -62,5 +70,9 @@ export class EntollmentStudentComponent implements OnInit {
       error: error => console.log(error)
     });
   }
+  onBack(): void{
+    this.router.navigate(["/students"])
+  }
+
 }
 
