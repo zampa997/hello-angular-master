@@ -16,6 +16,7 @@ import { CourseEdition } from 'src/app/DTOs/edition';
 export class EditionDetailsListComponent implements OnInit {
 
     edition:CourseEdition | undefined;
+    idCourse: number=0;
     
     faundo = faReply;
     faplus = faPlusCircle;
@@ -26,7 +27,7 @@ export class EditionDetailsListComponent implements OnInit {
 
     ngOnInit(): void {
         const id = Number(this.route.snapshot.paramMap.get('id'));
-
+        this.idCourse = Number(this.route.snapshot.paramMap.get('idcorso'));
         if (id!=null)
         {
             // this.editionService.getCourseById(id)
@@ -44,6 +45,6 @@ export class EditionDetailsListComponent implements OnInit {
       view?.addEventListener
     }
     onBack(): void{
-        this.router.navigate(["/editions"])
-    } 
+        this.router.navigate(["/editions/"+this.idCourse])
+      }
 }

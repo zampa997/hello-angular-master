@@ -34,7 +34,7 @@ const routes: Routes = [
 
   { path: 'editions/:id', component: EditionListComponent, data: { animationState: 'Four' } },
 
-  { path: 'editiondetails/:id', component: EditionDetailsListComponent, data: { animationState: 'Four' } },
+  { path: 'editiondetails/:id/:idcorso', component: EditionDetailsListComponent, data: { animationState: 'Four' } },
 
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 

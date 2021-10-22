@@ -19,6 +19,7 @@ export class EditionListComponent implements OnInit {
     public editions:CourseEdition[] = [];
     public edition:CourseEdition = new CourseEdition();
     public originalEditions: CourseEdition[] = [];
+    public id: number = 0;
     myValue:string="";
 
     faiscrivi = faGraduationCap;
@@ -33,8 +34,8 @@ export class EditionListComponent implements OnInit {
 
   ngOnInit(): void {
 
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    let obsCourses:Observable<CourseEdition[]> = this.service.getEditionsByCourseId(id);
+    this.id = Number(this.route.snapshot.paramMap.get('id'));
+    let obsCourses:Observable<CourseEdition[]> = this.service.getEditionsByCourseId(this.id);
     obsCourses.subscribe({
       next: cs => {
         this.editions = cs;   
