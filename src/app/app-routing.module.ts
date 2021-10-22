@@ -10,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { StudentDetailsListComponent } from './student/student-deatails-list/student-details-list.component';
 import { StudentListComponent } from './student/student-list/student-list.component';
 import { StudentAddComponent } from './student/student-add/student-add.component';
+import { EditionDetailsListComponent } from './edition/edition-details-list/edition-details-list.component';
 
 const routes: Routes = [
 
@@ -32,6 +33,8 @@ const routes: Routes = [
   {path: 'addedition/:id', component: EditionAddComponent, data: { animationState: 'ThreeDetailsAddEdition' }},
 
   { path: 'editions/:id', component: EditionListComponent, data: { animationState: 'Four' } },
+
+  { path: 'editiondetails/:id', component: EditionDetailsListComponent, data: { animationState: 'Four' } },
 
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 
