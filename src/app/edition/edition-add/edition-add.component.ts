@@ -22,6 +22,7 @@ export class EditionAddComponent implements OnInit {
   courses:Course[] = [];
   edition: CourseEdition = new CourseEdition();
   id:number = 0;
+  idCourse: number=0;
 
   faundo = faReply;
   fasave = faSave;
@@ -33,36 +34,26 @@ export class EditionAddComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = Number(this.route.snapshot.paramMap.get('id'));
-    if (this.id == 0) {
-        this.editionForm = this.fb.group({
-            code: ['', Validators.required ],
-            description: ['', Validators.required ],
-            startDate: ['', Validators.required ],
-            finalizationDate: ['', Validators.required ],
-            realPrice: ['', Validators.required ],
-            instructorId: [0, Validators.required ],
-            courseId: [this.id, Validators.required ]
-          });
-    }else{
+    this.idCourse = Number(this.route.snapshot.paramMap.get('idcorso'));
+    this.editionForm = this.fb.group({
+      code: ['', Validators.required ],
+      description: ['', Validators.required ],
+      startDate: ['', Validators.required ],
+      finalizationDate: ['', Validators.required ],
+      realPrice: ['', Validators.required ],
+      instructorId: [0, Validators.required ],
+      courseId: [this.idCourse, Validators.required ]
+    });
+    if(this.id!=0)
+    {
       this.editionService.getEditionById(this.id)
       .subscribe({
-        next: s => {this.edition = s;
-            console.log(this.edition.code);
-            this.editionForm = this.fb.group({
-                id: this.edition.id,
-                code: [this.edition.code, Validators.required],
-                description: [this.edition.description, Validators.required],
-                startDate: [this.edition.startDate, Validators.required],
-                finalizationDate: [this.edition.startDate, Validators.required],
-                realPrice: [this.edition.realPrice, Validators.required],
-                instructorId: [this.edition.instructorId, Validators.required],
-                courseId: [this.edition.courseId, Validators.required],
-            });
-            console.log(this.edition.id);  
+        next: s => {
+          this.edition = s;
+          this.displayEdition();
         },
         error: err => console.log(err)
       })
-      
     }
     this.editionService.getTeachers()
     .subscribe({
@@ -77,6 +68,23 @@ export class EditionAddComponent implements OnInit {
       error: error => console.log(error)
     });
   }
+
+  displayEdition():void{
+    if(this.editionForm)
+    {
+      this.editionForm.reset();
+      this.editionForm.patchValue({
+        code: this.edition.code,
+        description: this.edition.description,
+        startDate: this.edition.startDate,
+        finalizationDate: this.edition.finalizationDate,
+        realPrice: this.edition.realPrice,
+        instructorId: this.edition.instructorId,
+        courseId: this.edition.courseId
+      });
+    }
+  }
+
   save(){
     this.editionForm.value.instructorId = Number(this.editionForm.value.instructorId)
     this.editionForm.value.courseId = Number(this.editionForm.value.courseId)
@@ -90,20 +98,22 @@ export class EditionAddComponent implements OnInit {
           error: error=> console.log(error)
         });
     } else {
-        this.editionService.updateEdition(this.editionForm.value)
+        this.edition = this.editionForm.value;
+        this.edition.id = this.id;
+        this.editionService.updateEdition(this.edition)
         .subscribe({
           next: ce => {
-            alert("Edizione aggiornata con id: "+ce.id);
-            this.router.navigate([`"/editions/${this.editionForm.value.courseId}"`]);
+            alert("Edizione aggiornata con id: "+this.edition.id);
+            this.onBack();
           },
           error: error=> console.log(error)
         });
-        console.log(this.editionForm.value)
+
     }
     
   }
   onBack(): void{
-    this.router.navigate(["/coursedetails/"+this.id])
+    this.router.navigate(["/editions/"+this.idCourse])
   }
   checkValid(name:string):boolean{
     let element = this.editionForm.get(name);

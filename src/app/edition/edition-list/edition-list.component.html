@@ -24,7 +24,7 @@
                 <td>{{ e.description }}</td>
                 <td style="text-align: right;">
                     <div class="btn-group" role="group" aria-label="Basic example">
-                        <button class="btn btn-warning" [routerLink]="['/addedition', e?.id]"><fa-icon [icon]="faedit"></fa-icon>&nbsp;&nbsp;Modifica</button>
+                        <button class="btn btn-warning" [routerLink]="['/addedition', e?.id, e?.courseId]"><fa-icon [icon]="faedit"></fa-icon>&nbsp;&nbsp;Modifica</button>
                         <button type="button" class="btn btn-primary" ><fa-icon [icon]="fainfo"></fa-icon>&nbsp;&nbsp;Dettagli</button> <!--[routerLink]="['/editiondetails', e.id]"-->
                         <button type="button" class="btn btn-success" ><fa-icon [icon]="faiscrivi"></fa-icon>&nbsp;&nbsp;Iscrivi</button><!--[routerLink]="['/enrolledition', e.id]"-->
                         <!-- <button type="button" class="btn btn-danger" (click)="delete(e.id)">Delete</button> -->

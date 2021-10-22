@@ -81,7 +81,7 @@
             <div class="input-group myshadow">
                 <span class="input-group-text" id="basic-addon1">Edizioni:</span>
                 <button class="btn btn-info spanForm" id="view" [routerLink]="['/editions', course?.id]"><fa-icon [icon]="faview"></fa-icon>&nbsp;&nbsp;Visualizza</button>
-                <button class="btn btn-primary spanForm" [routerLink]="['/addedition', 0]"><fa-icon [icon]="faplus"></fa-icon>&nbsp;&nbsp;Aggiungi</button>
+                <button class="btn btn-primary spanForm" [routerLink]="['/addedition', 0, course?.id]"><fa-icon [icon]="faplus"></fa-icon>&nbsp;&nbsp;Aggiungi</button>
       </div>
         </div>
     </div>

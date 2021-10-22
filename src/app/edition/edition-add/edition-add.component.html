@@ -42,8 +42,8 @@
                 <option *ngFor="let teacher of teachers" [value]="teacher.id"> {{ teacher.firstname+' '+teacher.lastname }} </option>
             </select>
 
-            <label for="courseId"class="form-label">Corsi</label>
-            <select id="courseId" class="form-select myshadow" name="courseId" formControlName="courseId">
+            <label *ngIf="id==0" for="courseId"class="form-label">Corsi</label>
+            <select *ngIf="id==0" id="courseId" class="form-select myshadow" name="courseId" formControlName="courseId">
                 <option *ngFor="let c of courses" [value]="c.id"> {{ c.title }} </option>
             </select>
 
