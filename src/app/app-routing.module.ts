@@ -30,7 +30,7 @@ const routes: Routes = [
 
   {path: 'studentdetails/:id', component: StudentDetailsListComponent, data: { animationState: 'TwoDetails' }},
 
-  {path: 'addedition/:id', component: EditionAddComponent, data: { animationState: 'ThreeDetailsAddEdition' }},
+  {path: 'addedition/:id/:idcorso', component: EditionAddComponent, data: { animationState: 'ThreeDetailsAddEdition' }},
 
   { path: 'editions/:id', component: EditionListComponent, data: { animationState: 'Four' } },
 

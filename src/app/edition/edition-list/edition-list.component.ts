@@ -28,16 +28,18 @@ export class EditionListComponent implements OnInit {
     fasearch = faSearch;
 
     constructor(private service:DidactisService, private router:Router, private route:ActivatedRoute) {
-         console.log('courseListConstructor');
+
     }
 
   ngOnInit(): void {
-    console.log('ngOnInit EditionListComponent');
+
     const id = Number(this.route.snapshot.paramMap.get('id'));
     let obsCourses:Observable<CourseEdition[]> = this.service.getEditionsByCourseId(id);
     obsCourses.subscribe({
       next: cs => {
-        this.editions = cs;
+        this.editions = cs;   
+        console.log(this.editions);
+         
         this.originalEditions = cs;
       },
       error: err => console.log(err)
@@ -45,9 +47,23 @@ export class EditionListComponent implements OnInit {
   }
 
   search(name:string){
-
     this.editions = this.originalEditions;
     this.editions = this.editions.filter(c => c.code.includes(name))
-
+  }
+  delete(id: number) {
+    if(window.confirm("Sei sicuro di voler eliminare questo corso?")) {
+      console.log(this.remove(id));
+    }
+  }
+  remove(id: number){
+      console.log(id)
+      let obsCourse:Observable<CourseEdition> = this.service.deleteCourseEdition(id);
+      obsCourse.subscribe({
+          next: c => {
+          this.edition = c;
+          this.ngOnInit();
+          },
+          error: err => console.log(err)
+      });
   }
 }

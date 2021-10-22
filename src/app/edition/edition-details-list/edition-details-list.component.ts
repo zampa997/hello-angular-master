@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { faReply } from '@fortawesome/free-solid-svg-icons';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import { faList } from '@fortawesome/free-solid-svg-icons';
+import { Observable } from 'rxjs';
 import { DidactisService } from 'src/app/courses/didactis.service';
 import { CourseEdition } from 'src/app/DTOs/edition';
 
@@ -45,5 +46,4 @@ export class EditionDetailsListComponent implements OnInit {
     onBack(): void{
         this.router.navigate(["/editions"])
     } 
-
 }
